@@ -108,7 +108,7 @@ FROM
 			</staticText>
 			<staticText>
 				<reportElement x="380" y="210" width="109" height="20" uuid="56844305-d53a-4c50-be0c-5154033cb2b0"/>
-				<text><![CDATA[Ahmad Hartono, M.M.]]></text>
+				<text><![CDATA[HJ. Evy]]></text>
 			</staticText>
 		</band>
 	</summary>

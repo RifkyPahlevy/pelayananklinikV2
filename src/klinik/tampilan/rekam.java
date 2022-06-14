@@ -48,7 +48,7 @@ public class rekam extends javax.swing.JInternalFrame {
     }
     
     public void tambahTotal(int harga) {
-        biaya = biaya + harga;
+        biaya = biaya + harga ;
         txtTotalBiaya.setText(Integer.toString(biaya));
     }
     
@@ -168,7 +168,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT kd_obat, obat, harga FROM t_detail_obat_rekam_medis WHERE kd_rekam_medis ='"+ kd_rekam +"'";
+            String querry = "SELECT kd_obat, obat, harga, jumlah_keluar FROM t_detail_obat_rekam_medis WHERE kd_rekam_medis ='"+ kd_rekam +"'";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableObat.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -183,7 +183,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_kunjungan, kd_pasien, keluhan, kd_dokter, status_rekam_medis from t_kunjungan";
+            String querry_bukatable="SELECT kd_kunjungan, kd_pasien, keluhan, kd_dokter, status_rekam_medis from t_kunjungan where status_rekam_medis ='"+ "Belum Rekam Medis" +"'";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogKunjungan.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -259,10 +259,12 @@ public class rekam extends javax.swing.JInternalFrame {
         String kd_obat = txtKdObat.getText();
         String nm_obat = txtNmObat.getText();
         String harga = txtHargaObat.getText();
+        String jumlah = txtJml.getText();
+        
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_detail_obat_rekam_medis (kd_rekam_medis, kd_obat, obat, harga) VALUES ('"+kd_rekam_medis+"','"+kd_obat+"', '"+nm_obat+"', '"+harga+"')";
+           String querry ="INSERT INTO t_detail_obat_rekam_medis (kd_rekam_medis, kd_obat, obat, harga, jumlah_keluar) VALUES ('"+kd_rekam_medis+"','"+kd_obat+"', '"+nm_obat+"', '"+harga+"', '"+jumlah+"')";
            stm.executeUpdate(querry);
        }catch(Exception e){
            JOptionPane.showMessageDialog(this, "Gagal Memasukkan Data !", "Peringatan", JOptionPane.ERROR_MESSAGE);
@@ -613,6 +615,8 @@ public class rekam extends javax.swing.JInternalFrame {
         tableObat = new javax.swing.JTable();
         btnTambahObat = new javax.swing.JButton();
         btnHapusObat = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtJml = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
@@ -807,7 +811,7 @@ public class rekam extends javax.swing.JInternalFrame {
         dialogLaporan.getContentPane().setLayout(dialogLaporanLayout);
         dialogLaporanLayout.setHorizontalGroup(
             dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, Short.MAX_VALUE)
             .addGroup(dialogLaporanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -847,7 +851,6 @@ public class rekam extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Rekam Medis Pasien");
-        setSize(new java.awt.Dimension(1000, 820));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Rekam Medis"));
         jPanel1.setToolTipText("");
@@ -1181,6 +1184,14 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("Jumlah");
+
+        txtJml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtJmlActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -1196,15 +1207,23 @@ public class rekam extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel25))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtHargaObat)
+                            .addComponent(jLabel24))
+                        .addGap(0, 229, Short.MAX_VALUE))
                     .addComponent(txtNmObat)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(txtKdObat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCariObat)))
+                        .addComponent(btnCariObat))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtJml, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(txtHargaObat, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -1220,10 +1239,14 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNmObat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtHargaObat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHargaObat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtJml))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTambahObat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1266,7 +1289,6 @@ public class rekam extends javax.swing.JInternalFrame {
         });
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel5.setSize(new java.awt.Dimension(100, 66));
 
         txtTotalBiaya.setFont(new java.awt.Font("Lato", 3, 25)); // NOI18N
         txtTotalBiaya.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1333,14 +1355,14 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnUbah, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                        .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1413,6 +1435,7 @@ public class rekam extends javax.swing.JInternalFrame {
             txtKdObat.setText("");
             txtNmObat.setText("");
             txtHargaObat.setText("");
+            txtJml.setText("");
             loadDataObat(txtKdRekam.getText());
         }
         
@@ -1588,6 +1611,15 @@ public class rekam extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtJmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJmlActionPerformed
+        // TODO add your handling code here:
+         String getJumlah = txtJml.getText();
+        String getHarga = txtHargaObat.getText();
+        
+        int total = Integer.parseInt(getJumlah) * Integer.parseInt(getHarga);
+        txtHargaObat.setText(String.valueOf(total));
+    }//GEN-LAST:event_txtJmlActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCariKunjungan;
@@ -1630,6 +1662,7 @@ public class rekam extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1655,6 +1688,7 @@ public class rekam extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDiagnosa;
     private javax.swing.JTextField txtHargaObat;
     private javax.swing.JTextField txtHargaTindakan;
+    private javax.swing.JTextField txtJml;
     private javax.swing.JTextField txtKdDokter;
     private javax.swing.JTextField txtKdKunjungan;
     private javax.swing.JTextField txtKdObat;
