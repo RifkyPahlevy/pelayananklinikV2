@@ -342,7 +342,7 @@ public class menu_utama extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
-        Petugas form_dokter = new Petugas();
+        Petugas form_dokter = new Petugas(labelKode.getText());
         desktop.add(form_dokter);
         form_dokter.setVisible(true);
     }//GEN-LAST:event_btnDokterActionPerformed

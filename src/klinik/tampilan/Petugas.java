@@ -28,12 +28,14 @@ import net.sf.jasperreports.view.JasperViewer;
 public class Petugas extends javax.swing.JInternalFrame {
 
     
-    
+    String kd_petugas;
     
     DefaultTableModel tabel = new DefaultTableModel();
     
-    public Petugas() {
+    public Petugas(String kode) {
+        
         initComponents();
+        this.kd_petugas = kode;
         autoNumber();
         loadData();
         txtKdDokter.setEnabled(false);
@@ -41,12 +43,11 @@ public class Petugas extends javax.swing.JInternalFrame {
     }
     
     
-    public static void main(String[] args) {
-        new Petugas().setVisible(true);
-    }
+   
     public void kosong() {
         txtNmDokter.setText("");
         txtHpDokter.setText("");
+        txtPassword.setText("");
         btnTambah.setEnabled(true);
         btnUbah.setEnabled(false);
         btnHapus.setEnabled(false);
@@ -87,7 +88,7 @@ public class Petugas extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT * FROM t_petugas order by kd_petugas asc";
+            String querry = "SELECT * FROM t_petugas where kd_petugas = '"+kd_petugas+"'";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableDokter.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -121,9 +122,10 @@ public class Petugas extends javax.swing.JInternalFrame {
             String hp = txtHpDokter.getText();
             String jk = cmbJenisKelamin.getSelectedItem().toString();
             String spesialis = cmbSpesialis.getSelectedItem().toString();
+            String password = txtPassword.getText();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_petugas SET nama_petugas='"+nm+"', jenis_kelamin='"+jk+"', no_hp='"+hp+"', profesi='"+spesialis+"' WHERE kd_petugas='"+kd+"'";
+            String querry ="UPDATE t_petugas SET nama_petugas='"+nm+"', jenis_kelamin='"+jk+"', no_hp='"+hp+"', profesi='"+spesialis+"', password='"+password+"' WHERE kd_petugas='"+kd+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data Petugas", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -165,12 +167,15 @@ public class Petugas extends javax.swing.JInternalFrame {
         String getJk = tableDokter.getValueAt(tableDokter.getSelectedRow(), 2).toString();
         String getHp = tableDokter.getValueAt(tableDokter.getSelectedRow(), 3).toString();
         String getSpesialis = tableDokter.getValueAt(tableDokter.getSelectedRow(), 4).toString();
+        String getPass = tableDokter.getValueAt(tableDokter.getSelectedRow(), 5).toString();
 
+        
         txtKdDokter.setText(getKode);
         txtNmDokter.setText(getNama);
         txtHpDokter.setText(getHp);
         cmbJenisKelamin.getModel().setSelectedItem(getJk);
         cmbSpesialis.getModel().setSelectedItem(getSpesialis);
+        txtPassword.setText(getPass);
     }
     
 public void cetak() {
@@ -208,6 +213,8 @@ public void cetak() {
         cmbSpesialis = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         cmbJenisKelamin = new javax.swing.JComboBox<String>();
+        jLabel4 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDokter = new javax.swing.JTable();
@@ -267,29 +274,34 @@ public void cetak() {
 
         cmbJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-Laki", "Perempuan" }));
 
+        jLabel4.setText("Password");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTambah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUbah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnHapus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnKosong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbSpesialis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(txtNmDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtKdDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtHpDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3)
-                            .addComponent(cmbJenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtPassword)
+                    .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUbah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbSpesialis, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(txtNmDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addComponent(txtKdDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addComponent(txtHpDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel3)
+                                .addComponent(cmbJenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -314,9 +326,13 @@ public void cetak() {
                 .addComponent(txtHpDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbSpesialis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -458,6 +474,7 @@ public void cetak() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
@@ -467,5 +484,6 @@ public void cetak() {
     private javax.swing.JTextField txtHpDokter;
     private javax.swing.JTextField txtKdDokter;
     private javax.swing.JTextField txtNmDokter;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
