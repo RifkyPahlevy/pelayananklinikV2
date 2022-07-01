@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2022 at 04:36 PM
+-- Generation Time: Jul 01, 2022 at 05:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -37,8 +37,22 @@ CREATE TABLE `t_detail_obat_rekam_medis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `t_detail_obat_rekam_medis`
+--
+
+INSERT INTO `t_detail_obat_rekam_medis` (`kd_detail_obat_rekam_medis`, `kd_rekam_medis`, `kd_obat`, `obat`, `harga`, `jumlah_keluar`) VALUES
+(44, 'RMS0001', 'OBT0001', 'Paracetamol', 10000, 1);
+
+--
 -- Triggers `t_detail_obat_rekam_medis`
 --
+DELIMITER $$
+CREATE TRIGGER `hapus_stok_aja` AFTER DELETE ON `t_detail_obat_rekam_medis` FOR EACH ROW BEGIN 
+UPDATE t_obat SET stok_obat = stok_obat + OLD.jumlah_keluar
+WHERE kd_obat = OLD.kd_obat;
+END
+$$
+DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `stok_keluar` AFTER INSERT ON `t_detail_obat_rekam_medis` FOR EACH ROW BEGIN 
 UPDATE t_obat SET stok_obat = stok_obat - NEW.jumlah_keluar
@@ -60,6 +74,13 @@ CREATE TABLE `t_detail_tindakan_rekam_medis` (
   `tindakan` varchar(200) NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_detail_tindakan_rekam_medis`
+--
+
+INSERT INTO `t_detail_tindakan_rekam_medis` (`kd_detail_tindakan_rekam_medis`, `kd_rekam_medis`, `kd_tindakan`, `tindakan`, `harga`) VALUES
+(55, 'RMS0001', 'TDK0001', 'Konsultasi / Premedikasi', 50000);
 
 -- --------------------------------------------------------
 
@@ -100,6 +121,13 @@ CREATE TABLE `t_kunjungan` (
   `status_rekam_medis` varchar(100) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_kunjungan`
+--
+
+INSERT INTO `t_kunjungan` (`kd_kunjungan`, `tgl_kunjungan`, `kd_pasien`, `keluhan`, `kd_dokter`, `status_rekam_medis`) VALUES
+('KNJ0001', '2022-07-01', 'PS0001', 'Pusing', 'DR0004', 'Sudah Rekam Medis');
+
 -- --------------------------------------------------------
 
 --
@@ -119,8 +147,8 @@ CREATE TABLE `t_obat` (
 --
 
 INSERT INTO `t_obat` (`kd_obat`, `nama_obat`, `stok_obat`, `harga_obat`, `keterangan`) VALUES
-('OBT0001', 'Paracetamol', 102, 5000, 'Obat Penurun Panas'),
-('OBT0002', 'Acarboze', 95, 4000, 'Obat Antidiabetes'),
+('OBT0001', 'Paracetamol', 99, 10000, 'Obat demam'),
+('OBT0002', 'Amoldipin', 100, 30000, 'Untuk menurunkan darah'),
 ('OBT0003', 'Panadol  Merah', 100, 5000, 'Obat Pusing');
 
 -- --------------------------------------------------------
@@ -144,8 +172,7 @@ CREATE TABLE `t_obat_masuk` (
 --
 
 INSERT INTO `t_obat_masuk` (`kd_obat`, `tgl_masuk`, `nama_supplier`, `nama_obat`, `stok_masuk`, `harga_obat`, `keterangan`) VALUES
-('OBT0001', '2022-06-14', 'kimia', 'kdlksl', 2, 233, 'dsd'),
-('OBT0001', '2022-06-14', 'kimia', 'paracetamol', 2, 1222, 'dsds');
+('OBT0002', '2022-07-01', 'Kimia', 'Amoldipin', 100, 30000, 'Untuk menurunkan darah');
 
 --
 -- Triggers `t_obat_masuk`
@@ -176,6 +203,13 @@ CREATE TABLE `t_pasien` (
   `no_hp` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `t_pasien`
+--
+
+INSERT INTO `t_pasien` (`kd_pasien`, `nama_pasien`, `umur`, `jenis_kelamin`, `no_hp`) VALUES
+('PS0001', 'Akmal', '20', 'Laki-Laki', '08994445');
+
 -- --------------------------------------------------------
 
 --
@@ -187,15 +221,19 @@ CREATE TABLE `t_petugas` (
   `nama_petugas` varchar(50) NOT NULL,
   `jenis_kelamin` varchar(20) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
-  `profesi` varchar(50) NOT NULL
+  `profesi` varchar(50) NOT NULL,
+  `password` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `t_petugas`
 --
 
-INSERT INTO `t_petugas` (`kd_petugas`, `nama_petugas`, `jenis_kelamin`, `no_hp`, `profesi`) VALUES
-('KP0005', 'Rifky', 'Laki-Laki', '08997734', 'Dokter Umum');
+INSERT INTO `t_petugas` (`kd_petugas`, `nama_petugas`, `jenis_kelamin`, `no_hp`, `profesi`, `password`) VALUES
+('PTG0001', 'Rifky', 'Laki-Laki', '09993', 'Dokter Umum', 'dokterk'),
+('PTG0002', 'Marcel', 'Laki-Laki', '08993884', 'Bidan', 'bidan'),
+('PTG0003', 'Muhammad Akmal', 'Laki-Laki', '088374', 'Administrasi', 'admin'),
+('PTG0004', 'DR.Burhanudin', 'Laki-Laki', '09934555', 'Dokter Umum', '12345');
 
 -- --------------------------------------------------------
 
@@ -210,6 +248,13 @@ CREATE TABLE `t_rekam_medis` (
   `hasil_diagnosa` varchar(200) NOT NULL,
   `total_biaya` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `t_rekam_medis`
+--
+
+INSERT INTO `t_rekam_medis` (`kd_rekam_medis`, `tgl_rekam_medis`, `kd_kunjungan`, `hasil_diagnosa`, `total_biaya`) VALUES
+('RMS0001', '2022-07-01', 'KNJ0001', 'kecapean nih', 60000);
 
 -- --------------------------------------------------------
 
@@ -298,13 +343,13 @@ ALTER TABLE `t_tindakan`
 -- AUTO_INCREMENT for table `t_detail_obat_rekam_medis`
 --
 ALTER TABLE `t_detail_obat_rekam_medis`
-  MODIFY `kd_detail_obat_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `kd_detail_obat_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `t_detail_tindakan_rekam_medis`
 --
 ALTER TABLE `t_detail_tindakan_rekam_medis`
-  MODIFY `kd_detail_tindakan_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `kd_detail_tindakan_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

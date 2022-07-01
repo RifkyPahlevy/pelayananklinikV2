@@ -309,7 +309,7 @@ public class login extends javax.swing.JFrame {
             String kd_petugas = txtUser.getText();
             java.sql.Connection conn = (Connection) klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet rs = stm.executeQuery("SELECT * FROM t_petugas where kd_petugas = '"+kd_petugas+"' and password = '"+txtPass.getText()+"'");
+            java.sql.ResultSet rs = stm.executeQuery("SELECT * FROM t_petugas where kd_petugas = '"+kd_petugas+"'");
             if (rs.next()){
                 if(kd_petugas.equals(rs.getString("kd_petugas"))){
                     String nama = rs.getString("nama_petugas");
@@ -362,6 +362,7 @@ public class login extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Terjadi kesalahan");
+            System.out.println(ex);
         }
         
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -402,32 +403,13 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnKosong;
     private javax.swing.JButton btnKosong1;
-    private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnTambah1;
-    private javax.swing.JComboBox<String> cmbJenisKelamin;
     private javax.swing.JComboBox<String> cmbJenisKelamin1;
-    private javax.swing.JComboBox<String> cmbSpesialis;
     private javax.swing.JComboBox<String> cmbSpesialis1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -435,32 +417,12 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField txtHpDokter;
     private javax.swing.JTextField txtHpDokter1;
-    private javax.swing.JTextField txtKdDokter;
     private javax.swing.JTextField txtKdDokter1;
-    private javax.swing.JTextField txtNmDokter;
     private javax.swing.JTextField txtNmDokter1;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPassword1;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

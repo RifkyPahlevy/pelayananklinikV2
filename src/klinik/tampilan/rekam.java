@@ -211,7 +211,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_obat, nama_obat, harga_obat from t_obat";
+            String querry_bukatable="SELECT kd_obat, nama_obat, harga_obat,stok_obat from t_obat";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogObat.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
