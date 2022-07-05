@@ -11,16 +11,16 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     t_kunjungan.`kd_kunjungan` AS t_kunjungan_kd_kunjungan,
-     t_kunjungan.`tgl_kunjungan` AS t_kunjungan_tgl_kunjungan,
-     t_kunjungan.`kd_pasien` AS t_kunjungan_kd_pasien,
-     t_kunjungan.`keluhan` AS t_kunjungan_keluhan,
-     t_kunjungan.`kd_dokter` AS t_kunjungan_kd_dokter,
-     t_kunjungan.`status_rekam_medis` AS t_kunjungan_status_rekam_medis
+     kunjungan.`kd_kunjungan` AS t_kunjungan_kd_kunjungan,
+     kunjungan.`tgl_kunjungan` AS t_kunjungan_tgl_kunjungan,
+     kunjungan.`kd_pasien` AS t_kunjungan_kd_pasien,
+     kunjungan.`keluhan` AS t_kunjungan_keluhan,
+     kunjungan.`kd_petugas` AS t_kunjungan_kd_dokter,
+     kunjungan.`status_rekam_medis` AS t_kunjungan_status_rekam_medis
 FROM
-     `t_kunjungan` t_kunjungan
+     `kunjungan` kunjungan
 WHERE
-t_kunjungan.`tgl_kunjungan` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
+kunjungan.`tgl_kunjungan` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
 	</queryString>
 	<field name="t_kunjungan_kd_kunjungan" class="java.lang.String"/>
 	<field name="t_kunjungan_tgl_kunjungan" class="java.sql.Date"/>

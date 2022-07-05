@@ -3,13 +3,13 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
-     t_tindakan.`kd_tindakan` AS t_tindakan_kd_tindakan,
-     t_tindakan.`tindakan` AS t_tindakan_tindakan,
-     t_tindakan.`harga_tindakan` AS t_tindakan_harga_tindakan
+     layanan.`kd_layanan` AS t_tindakan_kd_tindakan,
+     layanan.`nama_layanan` AS t_tindakan_tindakan,
+     layanan.`harga_layanan` AS t_tindakan_harga_tindakan
 FROM
-     `t_tindakan` t_tindakan]]>
+     `layanan` layanan]]>
 	</queryString>
 	<field name="t_tindakan_kd_tindakan" class="java.lang.String"/>
 	<field name="t_tindakan_tindakan" class="java.lang.String"/>
@@ -18,12 +18,7 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="88" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="630" height="84" uuid="fcbba902-5f41-41e3-9196-377aca9b07ae"/>
-				<imageExpression><![CDATA["/Users/andikhadian/NetBeansProjects/klinik/src/klinik/gambar/kop.png"]]></imageExpression>
-			</image>
-		</band>
+		<band height="88" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="62" splitType="Stretch">

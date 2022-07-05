@@ -51,7 +51,7 @@ public class tindakan extends javax.swing.JInternalFrame {
 
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_tindakan,4)) AS nomor FROM t_tindakan";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_layanan,4)) AS nomor FROM layanan";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 txtKdTindakan.setText("TDK0001");
@@ -80,7 +80,7 @@ public class tindakan extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT kd_tindakan, tindakan, harga_tindakan FROM t_tindakan";
+            String querry = "SELECT kd_layanan, nama_layanan, harga_layanan FROM layanan";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableTindakan.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -96,7 +96,7 @@ public class tindakan extends javax.swing.JInternalFrame {
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_tindakan VALUES ('"+kd+"','"+nm+"', '"+harga+"')";
+           String querry ="INSERT INTO layanan VALUES ('"+kd+"','"+nm+"', '"+harga+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil Menambahkan tindakan baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -112,7 +112,7 @@ public class tindakan extends javax.swing.JInternalFrame {
             String harga = txtHargaTindakan.getText();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_tindakan SET tindakan='"+nm+"', harga_tindakan='"+harga+"' WHERE kd_tindakan='"+kd+"'";
+            String querry ="UPDATE layanan SET nama_layanan='"+nm+"', harga_layanan='"+harga+"' WHERE kd_layanan='"+kd+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data tindakan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -131,12 +131,12 @@ public class tindakan extends javax.swing.JInternalFrame {
         String dataDelete = (String) tableTindakan.getValueAt(s_row,0);
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
-            String querry = "DELETE FROM t_tindakan WHERE kd_tindakan=?";
+            String querry = "DELETE FROM layanan WHERE kd_layanan=?";
             java.sql.PreparedStatement stm = (PreparedStatement)conn.prepareStatement(querry);
             stm.setString(1,dataDelete);
             stm.executeUpdate();
             stm.close();
-            JOptionPane.showMessageDialog(this, "Berhasil menghapus data tindakan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Berhasil menghapus data layanan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
             btnTambah.setEnabled(true);
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Tidak bisa menghapus data", "Hapus Data", JOptionPane.WARNING_MESSAGE);

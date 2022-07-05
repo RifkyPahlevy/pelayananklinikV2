@@ -111,7 +111,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try {
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_rekam_medis,4)) AS nomor FROM t_rekam_medis";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_rekam_medis,4)) AS nomor FROM rekam_medis";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 txtKdRekam.setText("RMS0001");
@@ -140,7 +140,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT kd_rekam_medis, tgl_rekam_medis, kd_kunjungan, hasil_diagnosa, total_biaya FROM t_rekam_medis";
+            String querry = "SELECT kd_rekam_medis, tgl_rekam_medis, kd_kunjungan, hasil_diagnosa, total_biaya FROM rekam_medis";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableRekamMedis.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -183,7 +183,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_kunjungan, kd_pasien, keluhan, kd_dokter, status_rekam_medis from t_kunjungan where status_rekam_medis ='"+ "Belum Rekam Medis" +"'";
+            String querry_bukatable="SELECT kd_kunjungan, kd_pasien, keluhan, kd_petugas, status_rekam_medis from kunjungan where status_rekam_medis ='"+ "Belum Rekam Medis" +"'";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogKunjungan.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -197,7 +197,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_tindakan, tindakan, harga_tindakan from t_tindakan";
+            String querry_bukatable="SELECT kd_layanan, nama_layanan, harga_layanan from layanan";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogTindakan.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -211,7 +211,7 @@ public class rekam extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_obat, nama_obat, harga_obat,stok_obat from t_obat";
+            String querry_bukatable="SELECT kd_obat, nama_obat, harga_obat,stok_obat from obat";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogObat.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -229,7 +229,7 @@ public class rekam extends javax.swing.JInternalFrame {
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_rekam_medis VALUES ('"+kd_rekam+"','"+tgl_rekam+"', '"+kd_kunjungan+"', '"+hasil_diagnosa+"', '"+total_biaya+"')";
+           String querry ="INSERT INTO rekam_medis VALUES ('"+kd_rekam+"','"+tgl_rekam+"', '"+kd_kunjungan+"', '"+hasil_diagnosa+"', '"+total_biaya+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil menambahkan rekam medis pasien baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -281,7 +281,7 @@ public class rekam extends javax.swing.JInternalFrame {
             String total_biaya = txtTotalBiaya.getText();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_rekam_medis SET kd_kunjungan='"+kd_kunjungan+"', hasil_diagnosa='"+hasil_diagnosa+"', total_biaya='"+total_biaya+"' WHERE kd_rekam_medis='"+kd_rekam+"'";
+            String querry ="UPDATE rekam_medis SET kd_kunjungan='"+kd_kunjungan+"', hasil_diagnosa='"+hasil_diagnosa+"', total_biaya='"+total_biaya+"' WHERE kd_rekam_medis='"+kd_rekam+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data rekam medis pasien", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -330,7 +330,7 @@ public class rekam extends javax.swing.JInternalFrame {
         String dataDelete = (String) tableRekamMedis.getValueAt(s_row,0);
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
-            String querry = "DELETE FROM t_rekam_medis WHERE kd_rekam_medis=?";
+            String querry = "DELETE FROM rekam_medis WHERE kd_rekam_medis=?";
             java.sql.PreparedStatement stm = (PreparedStatement)conn.prepareStatement(querry);
             stm.setString(1,dataDelete);
             stm.executeUpdate();

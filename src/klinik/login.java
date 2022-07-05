@@ -34,7 +34,7 @@ public class login extends javax.swing.JFrame {
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_petugas VALUES ('"+kd+"','"+nm+"', '"+jk+"','"+hp+"','"+spesialis+"','"+password+"')";
+           String querry ="INSERT INTO petugas VALUES ('"+kd+"','"+nm+"', '"+jk+"','"+hp+"','"+spesialis+"','"+password+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil Daftar Petugas Baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -48,7 +48,7 @@ public class login extends javax.swing.JFrame {
 
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_petugas,4)) AS nomor FROM t_petugas";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_petugas,4)) AS nomor FROM petugas";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 txtKdDokter1.setText("PTG0001");
@@ -309,7 +309,7 @@ public class login extends javax.swing.JFrame {
             String kd_petugas = txtUser.getText();
             java.sql.Connection conn = (Connection) klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet rs = stm.executeQuery("SELECT * FROM t_petugas where kd_petugas = '"+kd_petugas+"'");
+            java.sql.ResultSet rs = stm.executeQuery("SELECT * FROM petugas where kd_petugas = '"+kd_petugas+"'");
             if (rs.next()){
                 if(kd_petugas.equals(rs.getString("kd_petugas"))){
                     String nama = rs.getString("nama_petugas");
@@ -341,7 +341,7 @@ public class login extends javax.swing.JFrame {
             String kd_petugas = txtUser.getText();
             java.sql.Connection conn = (Connection) klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet rs = stm.executeQuery("SELECT * FROM t_petugas where kd_petugas = '"+kd_petugas+"' and password = '"+txtPass.getText()+"'");
+            java.sql.ResultSet rs = stm.executeQuery("SELECT * FROM petugas where kd_petugas = '"+kd_petugas+"' and password = '"+txtPass.getText()+"'");
             if (rs.next()){
                 if(kd_petugas.equals(rs.getString("kd_petugas"))){
                     String nama = rs.getString("nama_petugas");

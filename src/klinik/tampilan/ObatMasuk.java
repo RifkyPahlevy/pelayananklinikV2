@@ -47,7 +47,7 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_obat, nama_obat, harga_obat, keterangan from t_obat";
+            String querry_bukatable="SELECT kd_obat, nama_obat, harga_obat, keterangan from obat";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogObat.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -70,7 +70,7 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
 
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_obat,4)) AS nomor FROM t_obat";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_obat,4)) AS nomor FROM obat";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 txtKdObat.setText("OBT0001");
@@ -99,7 +99,7 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT kd_obat, nama_obat, stok_masuk, harga_obat, keterangan FROM t_obat_masuk";
+            String querry = "SELECT kd_obat, nama_obat, stok_masuk, harga_obat, keterangan FROM obat_masuk";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableObat.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -118,7 +118,7 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_obat_masuk VALUES ('"+kd+"','"+date+"','"+supplier+"','"+nm+"', '"+stok+"', '"+harga+"','"+ket+"')";
+           String querry ="INSERT INTO obat_masuk VALUES ('"+kd+"','"+date+"','"+supplier+"','"+nm+"', '"+stok+"', '"+harga+"','"+ket+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil Menambahkan obat baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -136,7 +136,7 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
             String ket = txtKetObat.getText();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_obat_masuk SET nama_obat='"+nm+"', stok_obat='"+stok+"', harga_obat='"+harga+"', keterangan='"+ket+"' WHERE kd_obat='"+kd+"'";
+            String querry ="UPDATE obat_masuk SET nama_obat='"+nm+"', stok_obat='"+stok+"', harga_obat='"+harga+"', keterangan='"+ket+"' WHERE kd_obat='"+kd+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data obat", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -155,7 +155,7 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
         String dataDelete = (String) tableObat.getValueAt(s_row,0);
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
-            String querry = "DELETE FROM t_obat_masuk WHERE kd_obat=?";
+            String querry = "DELETE FROM obat_masuk WHERE kd_obat=?";
             java.sql.PreparedStatement stm = (PreparedStatement)conn.prepareStatement(querry);
             stm.setString(1,dataDelete);
             stm.executeUpdate();

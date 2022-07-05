@@ -45,7 +45,7 @@ public class pasien extends javax.swing.JInternalFrame {
         try {
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_kunjungan,4)) AS nomor FROM t_kunjungan";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_kunjungan,4)) AS nomor FROM kunjungan";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 autoNum = "KNJ0001";
@@ -84,7 +84,7 @@ public class pasien extends javax.swing.JInternalFrame {
 
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_pasien,4)) AS nomor FROM t_pasien";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_pasien,4)) AS nomor FROM pasien";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 txtKdPasien.setText("PS0001");
@@ -113,7 +113,7 @@ public class pasien extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT kd_pasien, nama_pasien, umur, jenis_kelamin, no_hp FROM t_pasien";
+            String querry = "SELECT kd_pasien, nama_pasien, umur, jenis_kelamin, no_hp FROM pasien";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tablePasien.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -137,8 +137,8 @@ public class pasien extends javax.swing.JInternalFrame {
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
            
-           String querry ="INSERT INTO t_pasien VALUES ('"+kd+"','"+nm+"', '"+umur+"', '"+jk+"','"+hp+"')";
-           String querry2 ="INSERT INTO t_kunjungan (kd_kunjungan,tgl_kunjungan,kd_pasien,keluhan,status_rekam_medis) VALUES ('"+autoNum+"','"+date+"','"+kd+"', '"+keluhan+"','"+"Belum Rekam Medis"+"')";
+           String querry ="INSERT INTO pasien VALUES ('"+kd+"','"+nm+"', '"+umur+"', '"+jk+"','"+hp+"')";
+           String querry2 ="INSERT INTO kunjungan (kd_kunjungan,tgl_kunjungan,kd_pasien,keluhan,status_rekam_medis) VALUES ('"+autoNum+"','"+date+"','"+kd+"', '"+keluhan+"','"+"Belum Rekam Medis"+"')";
 
            
            stm.executeUpdate(querry);
@@ -160,7 +160,7 @@ public class pasien extends javax.swing.JInternalFrame {
             String jk = cmbJenisKelamin.getSelectedItem().toString();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_pasien SET nama_pasien='"+nm+"', umur='"+umur+"', jenis_kelamin='"+jk+"', no_hp='"+hp+"' WHERE kd_pasien='"+kd+"'";
+            String querry ="UPDATE pasien SET nama_pasien='"+nm+"', umur='"+umur+"', jenis_kelamin='"+jk+"', no_hp='"+hp+"' WHERE kd_pasien='"+kd+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data pasien", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -179,7 +179,7 @@ public class pasien extends javax.swing.JInternalFrame {
         String dataDelete = (String) tablePasien.getValueAt(s_row,0);
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
-            String querry = "DELETE FROM t_pasien WHERE kd_pasien=?";
+            String querry = "DELETE FROM pasien WHERE kd_pasien=?";
             java.sql.PreparedStatement stm = (PreparedStatement)conn.prepareStatement(querry);
             stm.setString(1,dataDelete);
             stm.executeUpdate();

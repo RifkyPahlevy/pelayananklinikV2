@@ -3,15 +3,15 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
-     t_pasien.`kd_pasien` AS t_pasien_kd_pasien,
-     t_pasien.`nama_pasien` AS t_pasien_nama_pasien,
-     t_pasien.`umur` AS t_pasien_umur,
-     t_pasien.`jenis_kelamin` AS t_pasien_jenis_kelamin,
-     t_pasien.`no_hp` AS t_pasien_no_hp
+     pasien.`kd_pasien` AS t_pasien_kd_pasien,
+     pasien.`nama_pasien` AS t_pasien_nama_pasien,
+     pasien.`umur` AS t_pasien_umur,
+     pasien.`jenis_kelamin` AS t_pasien_jenis_kelamin,
+     pasien.`no_hp` AS t_pasien_no_hp
 FROM
-     `t_pasien` t_pasien]]>
+     `pasien` pasien]]>
 	</queryString>
 	<field name="t_pasien_kd_pasien" class="java.lang.String"/>
 	<field name="t_pasien_nama_pasien" class="java.lang.String"/>

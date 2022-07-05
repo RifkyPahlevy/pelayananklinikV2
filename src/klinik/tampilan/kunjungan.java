@@ -96,7 +96,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         try {
             java.sql.Connection line_konek = (com.mysql.jdbc.Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement line_statemen = line_konek.createStatement();
-            String query_bukaTabel = "SELECT MAX(RIGHT(kd_kunjungan,4)) AS nomor FROM t_kunjungan";
+            String query_bukaTabel = "SELECT MAX(RIGHT(kd_kunjungan,4)) AS nomor FROM kunjungan";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
                 txtKdKunjungan.setText("KNJ0001");
@@ -125,7 +125,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT kd_kunjungan, tgl_kunjungan, kd_pasien, keluhan, kd_dokter FROM t_kunjungan";
+            String querry = "SELECT kd_kunjungan, tgl_kunjungan, kd_pasien, keluhan, kd_petugas FROM kunjungan";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableKunjungan.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -140,7 +140,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_pasien, nama_pasien, umur, jenis_kelamin, no_hp from t_pasien";
+            String querry_bukatable="SELECT kd_pasien, nama_pasien, umur, jenis_kelamin, no_hp from pasien";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogPasien.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -174,7 +174,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_kunjungan VALUES ('"+kd_kunjungan+"','"+tgl_kunjungan+"', '"+kd_pasien+"', '"+keluhan_pasien+"', '"+kd_dokter+"', '"+status+"')";
+           String querry ="INSERT INTO kunjungan VALUES ('"+kd_kunjungan+"','"+tgl_kunjungan+"', '"+kd_pasien+"', '"+keluhan_pasien+"', '"+kd_dokter+"', '"+status+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil menambahkan kunjungan pasien baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -192,7 +192,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
             String kd_dokter = txtKdDokter.getText();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_kunjungan SET kd_pasien='"+kd_pasien+"', keluhan='"+keluhan_pasien+"', kd_dokter='"+kd_dokter+"' WHERE kd_kunjungan='"+kd_kunjungan+"'";
+            String querry ="UPDATE kunjungan SET kd_pasien='"+kd_pasien+"', keluhan='"+keluhan_pasien+"', kd_petugas='"+kd_dokter+"' WHERE kd_kunjungan='"+kd_kunjungan+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data kunjungan pasien", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -211,7 +211,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         String dataDelete = (String) tableKunjungan.getValueAt(s_row,0);
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
-            String querry = "DELETE FROM t_kunjungan WHERE kd_kunjungan=?";
+            String querry = "DELETE FROM kunjungan WHERE kd_kunjungan=?";
             java.sql.PreparedStatement stm = (PreparedStatement)conn.prepareStatement(querry);
             stm.setString(1,dataDelete);
             stm.executeUpdate();
@@ -236,7 +236,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         String getKeluhan = tableKunjungan.getValueAt(tableKunjungan.getSelectedRow(), 3).toString();
         String getKdDokter = tableKunjungan.getValueAt(tableKunjungan.getSelectedRow(), 4).toString();
         
-        String sqlPasien = "SELECT * from t_pasien WHERE kd_pasien ='"+ getKdPasien+"'";
+        String sqlPasien = "SELECT * from pasien WHERE kd_pasien ='"+ getKdPasien+"'";
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stat = conn.createStatement();

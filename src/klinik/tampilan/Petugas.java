@@ -88,7 +88,7 @@ public class Petugas extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT * FROM t_petugas where kd_petugas = '"+kd_petugas+"'";
+            String querry = "SELECT * FROM petugas where kd_petugas = '"+kd_petugas+"'";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableDokter.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -106,7 +106,7 @@ public class Petugas extends javax.swing.JInternalFrame {
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO t_petugas VALUES ('"+kd+"','"+nm+"', '"+jk+"','"+hp+"','"+spesialis+"')";
+           String querry ="INSERT INTO petugas VALUES ('"+kd+"','"+nm+"', '"+jk+"','"+hp+"','"+spesialis+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil Menambahkan Petugas Baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -125,7 +125,7 @@ public class Petugas extends javax.swing.JInternalFrame {
             String password = txtPassword.getText();
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_petugas SET nama_petugas='"+nm+"', jenis_kelamin='"+jk+"', no_hp='"+hp+"', profesi='"+spesialis+"', password='"+password+"' WHERE kd_petugas='"+kd+"'";
+            String querry ="UPDATE petugas SET nama_petugas='"+nm+"', jenis_kelamin='"+jk+"', no_hp='"+hp+"', profesi='"+spesialis+"', password='"+password+"' WHERE kd_petugas='"+kd+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
             JOptionPane.showMessageDialog(this, "Berhasil mengubah data Petugas", "Sukses", JOptionPane.INFORMATION_MESSAGE);
@@ -144,7 +144,7 @@ public class Petugas extends javax.swing.JInternalFrame {
         String dataDelete = (String) tableDokter.getValueAt(s_row,0);
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
-            String querry = "DELETE FROM t_petugas WHERE kd_petugas=?";
+            String querry = "DELETE FROM petugas WHERE kd_petugas=?";
             java.sql.PreparedStatement stm = (PreparedStatement)conn.prepareStatement(querry);
             stm.setString(1,dataDelete);
             stm.executeUpdate();

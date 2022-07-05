@@ -3,15 +3,15 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
-     t_obat.`kd_obat` AS t_obat_kd_obat,
-     t_obat.`nama_obat` AS t_obat_nama_obat,
-     t_obat.`stok_obat` AS t_obat_stok_obat,
-     t_obat.`harga_obat` AS t_obat_harga_obat,
-     t_obat.`keterangan` AS t_obat_keterangan
+     obat.`kd_obat` AS t_obat_kd_obat,
+     obat.`nama_obat` AS t_obat_nama_obat,
+     obat.`stok_obat` AS t_obat_stok_obat,
+     obat.`harga_obat` AS t_obat_harga_obat,
+     obat.`keterangan` AS t_obat_keterangan
 FROM
-     `t_obat` t_obat]]>
+     `obat` obat]]>
 	</queryString>
 	<field name="t_obat_kd_obat" class="java.lang.String"/>
 	<field name="t_obat_nama_obat" class="java.lang.String"/>
@@ -22,12 +22,7 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="86" splitType="Stretch">
-			<image>
-				<reportElement x="-4" y="0" width="630" height="84" uuid="25ae6b3e-a4df-44ce-880d-f1c3e93d4e6f"/>
-				<imageExpression><![CDATA["/Users/andikhadian/NetBeansProjects/klinik/src/klinik/gambar/kop.png"]]></imageExpression>
-			</image>
-		</band>
+		<band height="86" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
