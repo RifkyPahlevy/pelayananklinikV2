@@ -44,23 +44,38 @@ kunjungan.`tgl_kunjungan` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
 				<text><![CDATA[LAPORAN KUNJUNGAN PASIEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="83" width="102" height="20" uuid="c7673a9a-e0db-4dff-b345-c28b1eda6639"/>
+				<reportElement x="0" y="74" width="102" height="20" uuid="c7673a9a-e0db-4dff-b345-c28b1eda6639"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Kode Kunjungan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="102" y="83" width="100" height="20" uuid="88b5a044-deb0-4504-99f7-c6e47064e36e"/>
+				<reportElement x="102" y="74" width="100" height="20" uuid="88b5a044-deb0-4504-99f7-c6e47064e36e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Tanggal Kunjungan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="83" width="100" height="20" uuid="33ba01ff-1a2d-4ea8-bdfd-07a4156cf399"/>
+				<reportElement x="223" y="74" width="100" height="20" uuid="33ba01ff-1a2d-4ea8-bdfd-07a4156cf399"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Kode Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="421" y="83" width="100" height="20" uuid="6ff0a966-73ea-4a7a-b95b-e7274faad876"/>
+				<reportElement x="421" y="74" width="100" height="20" uuid="6ff0a966-73ea-4a7a-b95b-e7274faad876"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Keluhan Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="323" y="83" width="100" height="20" uuid="234d951d-f29e-4e2d-bb0f-03f477c775de"/>
+				<reportElement x="323" y="74" width="100" height="20" uuid="234d951d-f29e-4e2d-bb0f-03f477c775de"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Kode Dokter]]></text>
 			</staticText>
 			<textField pattern="dd MMMMM yyyy">
@@ -75,6 +90,12 @@ kunjungan.`tgl_kunjungan` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
 				<reportElement x="299" y="30" width="100" height="20" uuid="d74691a9-1b15-43e9-87d5-96789a261d8c"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy",new java.util.Locale("id")).format($P{tgl_akhir})]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="94" width="555" height="1" uuid="60aa5a2c-5dbd-4e8e-800e-293802088629"/>
+			</line>
+			<line>
+				<reportElement x="1" y="66" width="555" height="1" uuid="5808e493-e4fb-4ec0-b165-6ca4c15afe47"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -130,7 +151,7 @@ kunjungan.`tgl_kunjungan` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
 			</textField>
 			<staticText>
 				<reportElement x="346" y="135" width="109" height="20" uuid="4d1285e1-9260-4f54-8911-25a98061b901"/>
-				<text><![CDATA[Ahmad Hartono, M.M.]]></text>
+				<text><![CDATA[HJ. Evi Risnawati, SST]]></text>
 			</staticText>
 		</band>
 	</summary>

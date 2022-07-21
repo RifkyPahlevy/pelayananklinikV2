@@ -215,13 +215,17 @@ public void cetak() {
         setTitle("Obat");
         setPreferredSize(new java.awt.Dimension(1000, 616));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Obat"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Obat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel1.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Obat");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Nama Obat");
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -230,8 +234,10 @@ public void cetak() {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Keterangan Obat");
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -240,6 +246,7 @@ public void cetak() {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +255,7 @@ public void cetak() {
             }
         });
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -256,8 +264,10 @@ public void cetak() {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Harga Obat (Rp)");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Stok Obat");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -289,7 +299,7 @@ public void cetak() {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtKdObat, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,7 +329,8 @@ public void cetak() {
                 .addComponent(btnKosong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Obat"));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Obat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         tableObat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -339,6 +350,7 @@ public void cetak() {
         });
         jScrollPane1.setViewportView(tableObat);
 
+        btnLaporan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnLaporan.setText("Cetak Laporan");
         btnLaporan.setPreferredSize(new java.awt.Dimension(97, 48));
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {
@@ -384,7 +396,7 @@ public void cetak() {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

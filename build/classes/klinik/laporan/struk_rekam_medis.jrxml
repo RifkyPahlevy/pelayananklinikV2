@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="872c12e5-279b-40bb-8a32-922629ebad2f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="235"/>
+	<property name="ireport.y" value="286"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -55,17 +55,17 @@ FROM
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     t_rekam_medis.`kd_rekam_medis` AS t_rekam_medis_kd_rekam_medis,
-     t_rekam_medis.`tgl_rekam_medis` AS t_rekam_medis_tgl_rekam_medis,
-     t_rekam_medis.`kd_kunjungan` AS t_rekam_medis_kd_kunjungan,
-     t_rekam_medis.`hasil_diagnosa` AS t_rekam_medis_hasil_diagnosa,
-     t_rekam_medis.`total_biaya` AS t_rekam_medis_total_biaya,
-     t_kunjungan.`kd_kunjungan` AS t_kunjungan_kd_kunjungan,
-     t_kunjungan.`tgl_kunjungan` AS t_kunjungan_tgl_kunjungan,
-     t_kunjungan.`kd_pasien` AS t_kunjungan_kd_pasien,
-     t_kunjungan.`keluhan` AS t_kunjungan_keluhan,
-     t_kunjungan.`kd_dokter` AS t_kunjungan_kd_dokter,
-     t_kunjungan.`status_rekam_medis` AS t_kunjungan_status_rekam_medis,
+     rekam_medis.`kd_rekam_medis` AS t_rekam_medis_kd_rekam_medis,
+     rekam_medis.`tgl_rekam_medis` AS t_rekam_medis_tgl_rekam_medis,
+     rekam_medis.`kd_kunjungan` AS t_rekam_medis_kd_kunjungan,
+     rekam_medis.`hasil_diagnosa` AS t_rekam_medis_hasil_diagnosa,
+     rekam_medis.`total_biaya` AS t_rekam_medis_total_biaya,
+     kunjungan.`kd_kunjungan` AS t_kunjungan_kd_kunjungan,
+     kunjungan.`tgl_kunjungan` AS t_kunjungan_tgl_kunjungan,
+     kunjungan.`kd_pasien` AS t_kunjungan_kd_pasien,
+     kunjungan.`keluhan` AS t_kunjungan_keluhan,
+     kunjungan.`kd_petugas` AS t_kunjungan_kd_dokter,
+     kunjungan.`status_rekam_medis` AS t_kunjungan_status_rekam_medis,
      t_detail_obat_rekam_medis.`kd_detail_obat_rekam_medis` AS t_detail_obat_rekam_medis_kd_detail_obat_rekam_medis,
      t_detail_obat_rekam_medis.`kd_rekam_medis` AS t_detail_obat_rekam_medis_kd_rekam_medis,
      t_detail_obat_rekam_medis.`kd_obat` AS t_detail_obat_rekam_medis_kd_obat,
@@ -76,29 +76,29 @@ FROM
      t_detail_tindakan_rekam_medis.`kd_tindakan` AS t_detail_tindakan_rekam_medis_kd_tindakan,
      t_detail_tindakan_rekam_medis.`tindakan` AS t_detail_tindakan_rekam_medis_tindakan,
      t_detail_tindakan_rekam_medis.`harga` AS t_detail_tindakan_rekam_medis_harga,
-     t_pasien.`kd_pasien` AS t_pasien_kd_pasien,
-     t_pasien.`nama_pasien` AS t_pasien_nama_pasien,
-     t_pasien.`umur` AS t_pasien_umur,
-     t_pasien.`jenis_kelamin` AS t_pasien_jenis_kelamin,
-     t_pasien.`no_hp` AS t_pasien_no_hp,
-     t_dokter.`kd_dokter` AS t_dokter_kd_dokter,
-     t_dokter.`nama_dokter` AS t_dokter_nama_dokter,
-     t_dokter.`jenis_kelamin` AS t_dokter_jenis_kelamin,
-     t_dokter.`no_hp` AS t_dokter_no_hp,
-     t_dokter.`spesialis` AS t_dokter_spesialis
+     pasien.`kd_pasien` AS t_pasien_kd_pasien,
+     pasien.`nama_pasien` AS t_pasien_nama_pasien,
+     pasien.`umur` AS t_pasien_umur,
+     pasien.`jenis_kelamin` AS t_pasien_jenis_kelamin,
+     pasien.`no_hp` AS t_pasien_no_hp,
+     petugas.`kd_petugas` AS t_dokter_kd_dokter,
+     petugas.`nama_petugas` AS t_dokter_nama_dokter,
+     petugas.`jenis_kelamin` AS t_dokter_jenis_kelamin,
+     petugas.`no_hp` AS t_dokter_no_hp,
+     petugas.`profesi` AS t_dokter_spesialis
 FROM
-     `t_rekam_medis` t_rekam_medis,
-     `t_kunjungan` t_kunjungan,
+     `rekam_medis` rekam_medis,
+     `kunjungan` kunjungan,
      `t_detail_obat_rekam_medis` t_detail_obat_rekam_medis,
      `t_detail_tindakan_rekam_medis` t_detail_tindakan_rekam_medis,
-     `t_pasien` t_pasien,
-     `t_dokter` t_dokter
+     `pasien` pasien,
+     `petugas` petugas
 WHERE
-     t_rekam_medis.`kd_rekam_medis` = $P{kd_rekam} AND t_detail_tindakan_rekam_medis.`kd_rekam_medis` = $P{kd_rekam}
+     rekam_medis.`kd_rekam_medis` = $P{kd_rekam} AND t_detail_tindakan_rekam_medis.`kd_rekam_medis` = $P{kd_rekam}
 AND t_detail_obat_rekam_medis.`kd_rekam_medis` = $P{kd_rekam}
- AND t_kunjungan.`kd_kunjungan` = $P{kd_kunjungan}
-AND t_dokter.`kd_dokter` = $P{kd_dokter}
-AND t_pasien.`kd_pasien` = $P{kd_pasien}]]>
+ AND kunjungan.`kd_kunjungan` = $P{kd_kunjungan}
+AND petugas.`kd_petugas` = $P{kd_dokter}
+AND pasien.`kd_pasien` = $P{kd_pasien}]]>
 	</queryString>
 	<field name="t_rekam_medis_kd_rekam_medis" class="java.lang.String"/>
 	<field name="t_rekam_medis_tgl_rekam_medis" class="java.sql.Date"/>
@@ -597,7 +597,7 @@ AND t_pasien.`kd_pasien` = $P{kd_pasien}]]>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
-				<text><![CDATA[Ahmad Hartono, M.M.]]></text>
+				<text><![CDATA[HJ. Evi Risnawati, SST]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="15" width="232" height="20" uuid="f34a79c5-b612-4234-b0e7-ab48386e1041"/>

@@ -389,12 +389,12 @@
                   <Component id="btnTambah" pref="70" max="32767" attributes="0"/>
                   <Component id="jPanel5" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="11" max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="btnUbah" pref="70" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="btnHapus" pref="70" max="32767" attributes="0"/>
+                      <Component id="btnHapus" pref="71" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="btnKosong" pref="72" max="32767" attributes="0"/>
                   </Group>
@@ -408,9 +408,14 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="ff" red="99" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Form Rekam Medis"/>
+            <TitledBorder title="Form Rekam Medis">
+              <Font PropertyName="font" name="Tahoma" size="18" style="1"/>
+            </TitledBorder>
           </Border>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -540,6 +545,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kode Rekam Medis"/>
           </Properties>
         </Component>
@@ -549,11 +557,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tanggal Rekam Medis"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kode Kunjungan"/>
           </Properties>
         </Component>
@@ -563,6 +577,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kode Pasien"/>
           </Properties>
         </Component>
@@ -570,11 +587,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Keluhan Pasien"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCariKunjungan">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cari"/>
           </Properties>
           <Events>
@@ -583,6 +606,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kode Dokter"/>
           </Properties>
         </Component>
@@ -590,6 +616,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Hasil DIagnosa"/>
           </Properties>
         </Component>
@@ -599,6 +628,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nama Pasien"/>
           </Properties>
         </Component>
@@ -606,6 +638,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nama Dokter"/>
           </Properties>
         </Component>
@@ -613,9 +648,14 @@
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="ff" red="99" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Tindakan"/>
+            <TitledBorder title="Tindakan">
+              <Font PropertyName="font" name="Tahoma" size="18" style="1"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -685,6 +725,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kode Tindakan"/>
           </Properties>
         </Component>
@@ -702,11 +745,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel21">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tindakan"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel22">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Harga (Rp.)"/>
           </Properties>
         </Component>
@@ -738,6 +787,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnTambahTindakan">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tambah"/>
           </Properties>
           <Events>
@@ -746,6 +798,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnHapusTindakan">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Hapus"/>
           </Properties>
           <Events>
@@ -758,7 +813,9 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Daftar Rekam Medis"/>
+            <TitledBorder title="Daftar Rekam Medis">
+              <Font PropertyName="font" name="Tahoma" size="16" style="1"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -856,6 +913,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnLaporan">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cetak Laporan"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[97, 48]"/>
@@ -867,6 +927,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnStruk">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cetak Struk"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[97, 48]"/>
@@ -880,9 +943,14 @@
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel4">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="ff" red="99" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Obat"/>
+            <TitledBorder title="Obat">
+              <Font PropertyName="font" name="Tahoma" size="18" style="1"/>
+            </TitledBorder>
           </Border>
         </Property>
       </Properties>
@@ -897,7 +965,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="btnTambahObat" min="-2" pref="150" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnHapusObat" pref="150" max="32767" attributes="0"/>
+                          <Component id="btnHapusObat" pref="161" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -970,6 +1038,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel23">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kode Obat"/>
           </Properties>
         </Component>
@@ -977,6 +1048,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCariObat">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Cari"/>
           </Properties>
           <Events>
@@ -987,11 +1061,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel24">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nama Obat"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel25">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Harga (Rp.)"/>
           </Properties>
         </Component>
@@ -1047,6 +1127,9 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnTambahObat">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tambah"/>
           </Properties>
           <Events>
@@ -1055,6 +1138,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnHapusObat">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Hapus"/>
           </Properties>
           <Events>
@@ -1063,6 +1149,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Jumlah"/>
           </Properties>
         </Component>
@@ -1075,6 +1164,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnTambah">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="16" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Tambah"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 48]"/>
@@ -1086,6 +1178,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUbah">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="16" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Ubah"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 48]"/>
@@ -1097,6 +1192,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnHapus">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="16" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Hapus"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 48]"/>
@@ -1108,6 +1206,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnKosong">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="16" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Kosongkan"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[97, 48]"/>

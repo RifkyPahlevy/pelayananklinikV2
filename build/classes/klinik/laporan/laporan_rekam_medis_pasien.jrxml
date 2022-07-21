@@ -11,15 +11,15 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     t_rekam_medis.`kd_rekam_medis` AS t_rekam_medis_kd_rekam_medis,
-     t_rekam_medis.`tgl_rekam_medis` AS t_rekam_medis_tgl_rekam_medis,
-     t_rekam_medis.`kd_kunjungan` AS t_rekam_medis_kd_kunjungan,
-     t_rekam_medis.`hasil_diagnosa` AS t_rekam_medis_hasil_diagnosa,
-     t_rekam_medis.`total_biaya` AS t_rekam_medis_total_biaya
+     rekam_medis.`kd_rekam_medis` AS t_rekam_medis_kd_rekam_medis,
+     rekam_medis.`tgl_rekam_medis` AS t_rekam_medis_tgl_rekam_medis,
+     rekam_medis.`kd_kunjungan` AS t_rekam_medis_kd_kunjungan,
+     rekam_medis.`hasil_diagnosa` AS t_rekam_medis_hasil_diagnosa,
+     rekam_medis.`total_biaya` AS t_rekam_medis_total_biaya
 FROM
-     `t_rekam_medis` t_rekam_medis
+     `rekam_medis` rekam_medis
 WHERE 
-	t_rekam_medis.`tgl_rekam_medis` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
+	rekam_medis.`tgl_rekam_medis` BETWEEN $P{tgl_awal} AND $P{tgl_akhir}]]>
 	</queryString>
 	<field name="t_rekam_medis_kd_rekam_medis" class="java.lang.String"/>
 	<field name="t_rekam_medis_tgl_rekam_medis" class="java.sql.Date"/>
@@ -33,7 +33,7 @@ WHERE
 		<band height="88" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="84" splitType="Stretch">
+		<band height="95" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="11" width="555" height="20" uuid="80420d86-a708-4c1a-87d6-b26e989157f5"/>
 				<textElement textAlignment="Center">
@@ -42,24 +42,38 @@ WHERE
 				<text><![CDATA[LAPORAN REKAM MEDIS PASIEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="64" width="100" height="20" uuid="2c405bfb-aed3-47a1-87d0-ac65e7b536c2"/>
+				<reportElement x="0" y="60" width="100" height="20" uuid="2c405bfb-aed3-47a1-87d0-ac65e7b536c2"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Kode Rekam Medis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="64" width="146" height="20" uuid="b9a898b0-bda6-4384-8fe4-a8d08a21b0ba"/>
+				<reportElement x="100" y="60" width="146" height="20" uuid="b9a898b0-bda6-4384-8fe4-a8d08a21b0ba"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Tanggal Rekam Medis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="246" y="64" width="100" height="20" uuid="a66078c8-8431-4f20-9454-01e2cd4f7d34"/>
+				<reportElement x="246" y="60" width="100" height="20" uuid="a66078c8-8431-4f20-9454-01e2cd4f7d34"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Kode Kunjungan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="64" width="100" height="20" uuid="3ee614a9-f7c3-43b6-8962-7474c422ef3a"/>
+				<reportElement x="346" y="60" width="100" height="20" uuid="3ee614a9-f7c3-43b6-8962-7474c422ef3a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Hasil Diagnosa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="64" width="100" height="20" uuid="13e742c9-8ae3-4c98-bc15-dfb95db322bc"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="455" y="60" width="100" height="20" uuid="13e742c9-8ae3-4c98-bc15-dfb95db322bc"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Total Biaya]]></text>
 			</staticText>
 			<textField pattern="dd MMMMM yyyy">
@@ -74,29 +88,39 @@ WHERE
 				<reportElement x="264" y="31" width="23" height="20" uuid="b5bbb402-b7cf-4438-b1e7-7af10c96ac66"/>
 				<text><![CDATA[s/d]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="80" width="555" height="1" uuid="0c0d2886-f595-4f95-80e5-e472c2fdbda9"/>
+			</line>
+			<line>
+				<reportElement x="3" y="53" width="549" height="4" uuid="d74fd854-d76e-48e3-8c45-d8aa0c4b3f2d"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="22" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="d4a118b3-9450-4855-a2d6-f467e2a79415"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_rekam_medis_kd_rekam_medis}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="146" height="20" uuid="cc83431b-5905-4ef3-8e09-181f8827bcb0"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE d MMMMM yyyy",new java.util.Locale("id")).format($F{t_rekam_medis_tgl_rekam_medis})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="246" y="0" width="100" height="20" uuid="53d60ba7-433a-4194-844d-4a006ed049e2"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_rekam_medis_kd_kunjungan}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="346" y="0" width="137" height="20" uuid="cbe351fc-f991-455a-8532-83b9f45680b0"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_rekam_medis_hasil_diagnosa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="455" y="2" width="100" height="20" uuid="bdb65ab9-dd0f-43a1-967b-d13024ff79b6"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_rekam_medis_total_biaya}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -126,7 +150,7 @@ WHERE
 			</textField>
 			<staticText>
 				<reportElement x="358" y="127" width="109" height="20" uuid="8670da67-6d1c-4405-a523-5a2a01764d6d"/>
-				<text><![CDATA[Ahmad Hartono, M.M.]]></text>
+				<text><![CDATA[HJ. Evi Risnawati, SST]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="378" y="68" width="90" height="20" uuid="98290b87-58ec-4880-a0ab-2d903a50e8f3"/>

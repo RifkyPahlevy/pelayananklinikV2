@@ -22,7 +22,7 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="86" splitType="Stretch"/>
+		<band height="66" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
@@ -34,51 +34,63 @@ FROM
 				<text><![CDATA[LAPORAN DATA OBAT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="41" width="100" height="20" uuid="febf87d1-b810-4c82-8ad8-6cd918184d34"/>
+				<reportElement x="0" y="35" width="100" height="20" uuid="febf87d1-b810-4c82-8ad8-6cd918184d34"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Kode Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="41" width="100" height="20" uuid="eb330047-1af0-4d66-bb44-cd9f7ddd4896"/>
+				<reportElement x="100" y="35" width="100" height="20" uuid="eb330047-1af0-4d66-bb44-cd9f7ddd4896"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Nama Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="215" y="41" width="51" height="20" uuid="445eb3ee-7be6-48ef-b8fc-8cc90023efd8"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="215" y="35" width="51" height="20" uuid="445eb3ee-7be6-48ef-b8fc-8cc90023efd8"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Stok Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="285" y="41" width="71" height="20" uuid="59b93ebd-9008-4ba0-8f20-071a22783362"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="285" y="35" width="71" height="20" uuid="59b93ebd-9008-4ba0-8f20-071a22783362"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Harga Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="423" y="41" width="132" height="20" uuid="df96d649-77ba-4875-9266-8c42d49545b7"/>
+				<reportElement x="423" y="35" width="132" height="20" uuid="df96d649-77ba-4875-9266-8c42d49545b7"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Keterangan Obat]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="53" width="555" height="1" uuid="b95bbe3b-4d34-4011-b1bc-0c9e9059e2f0"/>
+			</line>
+			<line>
+				<reportElement x="0" y="34" width="555" height="1" uuid="0ee331e1-052b-4a4e-9379-c1482dc4943f"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="21" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="9b769f4f-c72d-4380-8f25-8b8f118d5f47"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_obat_kd_obat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="1" width="100" height="20" uuid="26040884-bb76-4a0e-bf56-a7edfde2da13"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_obat_nama_obat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="215" y="1" width="51" height="20" uuid="b053b21d-4cf2-4730-95e5-ab7257844394"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_obat_stok_obat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="285" y="1" width="71" height="20" uuid="b98f9e45-a960-45d1-a9bc-385f24779593"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_obat_harga_obat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="423" y="1" width="132" height="20" uuid="c005f078-c79b-47ed-97e2-e7c61de34af9"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_obat_keterangan}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -112,7 +124,7 @@ FROM
 			</staticText>
 			<staticText>
 				<reportElement x="383" y="198" width="109" height="20" uuid="d99508e3-dee1-4efb-b250-506184c4da6f"/>
-				<text><![CDATA[Ahmad Hartono, M.M.]]></text>
+				<text><![CDATA[HJ. Evi Risnawati, SST]]></text>
 			</staticText>
 		</band>
 	</summary>

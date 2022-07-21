@@ -298,7 +298,7 @@ public class rekam extends javax.swing.JInternalFrame {
             String status = "Sudah Rekam Medis";
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_kunjungan SET status_rekam_medis='"+status+"' WHERE kd_kunjungan='"+kd_kunjungan+"'";
+            String querry ="UPDATE kunjungan SET status_rekam_medis='"+status+"' WHERE kd_kunjungan='"+kd_kunjungan+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
         }catch(Exception e){
@@ -313,7 +313,7 @@ public class rekam extends javax.swing.JInternalFrame {
             String status = "Belum Rekam Medis";
             
             Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
-            String querry ="UPDATE t_kunjungan SET status_rekam_medis='"+status+"' WHERE kd_kunjungan='"+kd_kunjungan+"'";
+            String querry ="UPDATE kunjungan SET status_rekam_medis='"+status+"' WHERE kd_kunjungan='"+kd_kunjungan+"'";
             com.mysql.jdbc.PreparedStatement prepare = (PreparedStatement)conn.prepareStatement(querry);
             prepare.execute();
         }catch(Exception e){
@@ -415,26 +415,26 @@ public class rekam extends javax.swing.JInternalFrame {
         String getTotalBiaya = tableRekamMedis.getValueAt(tableRekamMedis.getSelectedRow(), 4).toString();
         
         biaya = Integer.parseInt(getTotalBiaya);
-        String sqlKunjungan = "SELECT * from t_kunjungan WHERE kd_kunjungan ='"+ getKdKunjungan +"'";
+        String sqlKunjungan = "SELECT * from kunjungan WHERE kd_kunjungan ='"+ getKdKunjungan +"'";
         try{
             Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stat = conn.createStatement();
             ResultSet hasil = stat.executeQuery(sqlKunjungan);
                 if(hasil.next()){
                     String kd_pasien = hasil.getString("kd_pasien"); 
-                    String kd_dokter = hasil.getString("kd_dokter"); 
+                    String kd_dokter = hasil.getString("kd_petugas"); 
                     String keluhan = hasil.getString("keluhan"); 
                     txtKdPasien.setText(kd_pasien);
                     txtKdDokter.setText(kd_dokter);
                     txtKeluhanPasien.setText(keluhan);
                     
-                    String sqlDokter = "SELECT * from t_dokter WHERE kd_dokter ='"+ kd_dokter +"'";
+                    String sqlDokter = "SELECT * from petugas WHERE kd_petugas ='"+ kd_dokter +"'";
                     try{
                         Connection conn2 = (Connection)klinik.koneksi.koneksi.getDB();
                         java.sql.Statement stat2 = conn2.createStatement();
                         ResultSet hasil2 = stat2.executeQuery(sqlDokter);
                             if(hasil2.next()){
-                                String namaDokter = hasil2.getString("nama_dokter");             
+                                String namaDokter = hasil2.getString("nama_petugas");             
                                 txtNmDokter.setText(namaDokter);
                             } else {
                                 System.out.println("Error get dokter");
@@ -443,7 +443,7 @@ public class rekam extends javax.swing.JInternalFrame {
                             System.out.println(e);
                     }  
                     
-                    String sqlPasien = "SELECT * from t_pasien WHERE kd_pasien ='"+ kd_pasien +"'";
+                    String sqlPasien = "SELECT * from pasien WHERE kd_pasien ='"+ kd_pasien +"'";
                     try{
                         Connection conn2 = (Connection)klinik.koneksi.koneksi.getDB();
                         java.sql.Statement stat2 = conn2.createStatement();
@@ -852,19 +852,26 @@ public class rekam extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Rekam Medis Pasien");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Rekam Medis"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Rekam Medis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel1.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Rekam Medis");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Tanggal Rekam Medis");
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel13.setText("Kode Kunjungan");
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel14.setText("Kode Pasien");
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel15.setText("Keluhan Pasien");
 
+        btnCariKunjungan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnCariKunjungan.setText("Cari");
         btnCariKunjungan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -872,12 +879,16 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel18.setText("Kode Dokter");
 
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel19.setText("Hasil DIagnosa");
 
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel16.setText("Nama Pasien");
 
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel20.setText("Nama Dokter");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -975,8 +986,10 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Tindakan"));
+        jPanel3.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel17.setText("Kode Tindakan");
 
         btnCariTindakan.setText("Cari");
@@ -986,8 +999,10 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel21.setText("Tindakan");
 
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel22.setText("Harga (Rp.)");
 
         tableTindakan.setModel(new javax.swing.table.DefaultTableModel(
@@ -1008,6 +1023,7 @@ public class rekam extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tableTindakan);
 
+        btnTambahTindakan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambahTindakan.setText("Tambah");
         btnTambahTindakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1015,6 +1031,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        btnHapusTindakan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapusTindakan.setText("Hapus");
         btnHapusTindakan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1074,7 +1091,7 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Rekam Medis"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Rekam Medis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
 
         tableRekamMedis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1094,6 +1111,7 @@ public class rekam extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tableRekamMedis);
 
+        btnLaporan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnLaporan.setText("Cetak Laporan");
         btnLaporan.setPreferredSize(new java.awt.Dimension(97, 48));
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {
@@ -1102,6 +1120,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        btnStruk.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnStruk.setText("Cetak Struk");
         btnStruk.setPreferredSize(new java.awt.Dimension(97, 48));
         btnStruk.addActionListener(new java.awt.event.ActionListener() {
@@ -1137,10 +1156,13 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Obat"));
+        jPanel4.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Obat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel23.setText("Kode Obat");
 
+        btnCariObat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnCariObat.setText("Cari");
         btnCariObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1148,8 +1170,10 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel24.setText("Nama Obat");
 
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel25.setText("Harga (Rp.)");
 
         tableObat.setModel(new javax.swing.table.DefaultTableModel(
@@ -1170,6 +1194,7 @@ public class rekam extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(tableObat);
 
+        btnTambahObat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambahObat.setText("Tambah");
         btnTambahObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1177,6 +1202,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        btnHapusObat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapusObat.setText("Hapus");
         btnHapusObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1184,6 +1210,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Jumlah");
 
         txtJml.addActionListener(new java.awt.event.ActionListener() {
@@ -1203,7 +1230,7 @@ public class rekam extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnTambahObat, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnHapusObat, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addComponent(btnHapusObat, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
@@ -1256,6 +1283,7 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -1264,6 +1292,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -1272,6 +1301,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -1280,6 +1310,7 @@ public class rekam extends javax.swing.JInternalFrame {
             }
         });
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -1355,12 +1386,12 @@ public class rekam extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnUbah, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1557,7 +1588,7 @@ public class rekam extends javax.swing.JInternalFrame {
         if(status.equals("Sudah Rekam Medis")) {
             JOptionPane.showMessageDialog(rootPane, "Tidak dapat memasukan data kunjungan pasien yang sudah tercatat di rekam medis", "Pemberitahuan", JOptionPane.WARNING_MESSAGE);
         } else {
-            String sqlPasien = "SELECT * from t_pasien WHERE kd_pasien ='"+ getKdPasien +"'";
+            String sqlPasien = "SELECT * from pasien WHERE kd_pasien ='"+ getKdPasien +"'";
             try{
                 Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
                 java.sql.Statement stat = conn.createStatement();
@@ -1572,7 +1603,7 @@ public class rekam extends javax.swing.JInternalFrame {
                     System.out.println(e);
             }
 
-            String sqlDokter = "SELECT * from t_dokter WHERE kd_dokter ='"+ getKdDokter +"'";
+            String sqlDokter = "SELECT * from petugas WHERE kd_petugas ='"+ getKdDokter +"'";
             try{
                 Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
                 java.sql.Statement stat = conn.createStatement();

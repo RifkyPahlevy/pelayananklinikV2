@@ -259,13 +259,17 @@ public class pasien extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Pasien");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Pasien"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel1.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Pasien");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Nama Pasien");
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -274,8 +278,10 @@ public class pasien extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Nomor Handphone Pasien");
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -284,6 +290,7 @@ public class pasien extends javax.swing.JInternalFrame {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -292,6 +299,7 @@ public class pasien extends javax.swing.JInternalFrame {
             }
         });
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -300,12 +308,15 @@ public class pasien extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Jenis Kelamin");
 
         cmbJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-Laki", "Perempuan" }));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Umur Pasien");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setText("Keluhan");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -375,7 +386,8 @@ public class pasien extends javax.swing.JInternalFrame {
                 .addComponent(btnKosong, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Pasien"));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         tablePasien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -395,6 +407,7 @@ public class pasien extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablePasien);
 
+        btnLaporan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnLaporan.setText("Cetak Laporan");
         btnLaporan.setPreferredSize(new java.awt.Dimension(97, 48));
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {

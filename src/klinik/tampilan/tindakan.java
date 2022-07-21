@@ -200,12 +200,16 @@ public void cetak() {
         setResizable(true);
         setTitle("Tindakan");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Tindakan"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Tindakan");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Tindakan");
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -214,8 +218,10 @@ public void cetak() {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Harga Tindakan (Rp)");
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -224,6 +230,7 @@ public void cetak() {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +239,7 @@ public void cetak() {
             }
         });
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +296,8 @@ public void cetak() {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Tindakan"));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         tableTindakan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -308,6 +317,7 @@ public void cetak() {
         });
         jScrollPane1.setViewportView(tableTindakan);
 
+        btnLaporan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnLaporan.setText("Cetak Laporan");
         btnLaporan.setPreferredSize(new java.awt.Dimension(97, 48));
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {

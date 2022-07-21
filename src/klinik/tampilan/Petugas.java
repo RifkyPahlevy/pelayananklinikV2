@@ -62,7 +62,7 @@ public class Petugas extends javax.swing.JInternalFrame {
             String query_bukaTabel = "SELECT MAX(RIGHT(kd_dokter,4)) AS nomor FROM t_dokter";
             java.sql.ResultSet line_result = line_statemen.executeQuery(query_bukaTabel);
             if (line_result.first() == false) {
-                txtKdDokter.setText("KP0001");
+                txtKdDokter.setText("PTG0001");
             } else {
                 line_result.last();
                 int no = line_result.getInt(1) + 1;
@@ -75,7 +75,7 @@ public class Petugas extends javax.swing.JInternalFrame {
                     case 4: nomor ="" +nomor; break;
                         
                 }
-                txtKdDokter.setText("KP" + nomor);
+                txtKdDokter.setText("PTG" + nomor);
             }
         } catch (Exception e) {
             e.printStackTrace();//penanganan masalah
@@ -88,7 +88,7 @@ public class Petugas extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry = "SELECT * FROM petugas where kd_petugas = '"+kd_petugas+"'";
+            String querry = "SELECT * FROM petugas ";
             java.sql.ResultSet rs = stm.executeQuery(querry);
             tableDokter.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -102,11 +102,12 @@ public class Petugas extends javax.swing.JInternalFrame {
         String hp = txtHpDokter.getText();
         String jk = cmbJenisKelamin.getSelectedItem().toString();
         String spesialis = cmbSpesialis.getSelectedItem().toString();
-        
+          String pass = txtPassword.getText();
+
        try{
            Connection conn =(Connection)klinik.koneksi.koneksi.getDB();
            java.sql.Statement stm = conn.createStatement();
-           String querry ="INSERT INTO petugas VALUES ('"+kd+"','"+nm+"', '"+jk+"','"+hp+"','"+spesialis+"')";
+           String querry ="INSERT INTO petugas VALUES ('"+kd+"','"+nm+"', '"+jk+"','"+hp+"','"+spesialis+"','"+pass+"')";
            stm.executeUpdate(querry);
            JOptionPane.showMessageDialog(this, "Berhasil Menambahkan Petugas Baru", "Sukses", JOptionPane.INFORMATION_MESSAGE);
        }catch(Exception e){
@@ -220,18 +221,23 @@ public void cetak() {
         tableDokter = new javax.swing.JTable();
         btnLaporan = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(153, 255, 153));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Dokter");
+        setTitle("Petugas Pemeriksaan");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Petugas Pemeriksaan"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Petugas Pemeriksaan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Petugas");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Nama Petugas");
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -240,8 +246,10 @@ public void cetak() {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Nomor Handphone");
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -250,6 +258,7 @@ public void cetak() {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +267,7 @@ public void cetak() {
             }
         });
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -266,14 +276,17 @@ public void cetak() {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setText("Profesi");
 
         cmbSpesialis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dokter Umum", "Bidan", "Administrasi", " " }));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Jenis Kelamin");
 
         cmbJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-Laki", "Perempuan" }));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Password");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -342,7 +355,8 @@ public void cetak() {
                 .addComponent(btnKosong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Petugas"));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Petugas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         tableDokter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -362,6 +376,7 @@ public void cetak() {
         });
         jScrollPane1.setViewportView(tableDokter);
 
+        btnLaporan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnLaporan.setText("Cetak Laporan");
         btnLaporan.setPreferredSize(new java.awt.Dimension(97, 48));
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {

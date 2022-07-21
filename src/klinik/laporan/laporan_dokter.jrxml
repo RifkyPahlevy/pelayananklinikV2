@@ -3,15 +3,15 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<queryString>
 		<![CDATA[SELECT
-     t_dokter.`kd_dokter` AS t_dokter_kd_dokter,
-     t_dokter.`nama_dokter` AS t_dokter_nama_dokter,
-     t_dokter.`jenis_kelamin` AS t_dokter_jenis_kelamin,
-     t_dokter.`no_hp` AS t_dokter_no_hp,
-     t_dokter.`spesialis` AS t_dokter_spesialis
+     petugas.`kd_petugas` AS t_dokter_kd_dokter,
+     petugas.`nama_petugas` AS t_dokter_nama_dokter,
+     petugas.`jenis_kelamin` AS t_dokter_jenis_kelamin,
+     petugas.`no_hp` AS t_dokter_no_hp,
+     petugas.`profesi` AS t_dokter_spesialis
 FROM
-     `t_dokter` t_dokter]]>
+     `petugas` petugas]]>
 	</queryString>
 	<field name="t_dokter_kd_dokter" class="java.lang.String"/>
 	<field name="t_dokter_nama_dokter" class="java.lang.String"/>
@@ -25,21 +25,21 @@ FROM
 		<band height="85" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="84" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="20" uuid="0e2fc584-61d7-4202-81ac-44ce787f0a0b"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
-				<text><![CDATA[LAPORAN DATA DOKTER]]></text>
+				<text><![CDATA[LAPORAN DATA PETUGAS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="41" width="100" height="20" uuid="3849234c-0ca4-464a-bf1c-7d2727be9bd2"/>
-				<text><![CDATA[Kode Dokter]]></text>
+				<text><![CDATA[Kode Petugas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="41" width="100" height="20" uuid="6ddcdbb3-3d6a-4d3c-8637-163c0d88c967"/>
-				<text><![CDATA[Nama Dokter]]></text>
+				<text><![CDATA[Nama Petugas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="223" y="41" width="100" height="20" uuid="8225d857-35ce-4ef6-925b-880de7b51e8d"/>
@@ -51,8 +51,14 @@ FROM
 			</staticText>
 			<staticText>
 				<reportElement x="323" y="41" width="100" height="20" uuid="79883f80-02f1-4c07-a6c0-5a5e00577fda"/>
-				<text><![CDATA[Spesialis]]></text>
+				<text><![CDATA[Profesi]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="71" width="555" height="1" uuid="f9ce098d-8328-4643-abaf-e98d3130ff92"/>
+			</line>
+			<line>
+				<reportElement x="2" y="31" width="555" height="1" uuid="2eaabe93-7486-449f-984a-5a3172a089b9"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -108,7 +114,7 @@ FROM
 			</staticText>
 			<staticText>
 				<reportElement x="380" y="210" width="109" height="20" uuid="56844305-d53a-4c50-be0c-5154033cb2b0"/>
-				<text><![CDATA[HJ. Evy]]></text>
+				<text><![CDATA[HJ. Evi Risnawati, SST]]></text>
 			</staticText>
 		</band>
 	</summary>

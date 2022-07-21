@@ -155,7 +155,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         try{
             java.sql.Connection conn = (Connection)klinik.koneksi.koneksi.getDB();
             java.sql.Statement stm = conn.createStatement();
-            String querry_bukatable="SELECT kd_dokter, nama_dokter, jenis_kelamin, spesialis from t_dokter";
+            String querry_bukatable="SELECT kd_petugas, nama_petugas, jenis_kelamin, profesi from petugas where profesi <> '"+"Administrasi"+"'";
             java.sql.ResultSet rs = stm.executeQuery(querry_bukatable);
             tableDialogDokter.setModel(DbUtils.resultSetToTableModel(rs));
         }catch(Exception e){
@@ -582,7 +582,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         dialogLaporan.getContentPane().setLayout(dialogLaporanLayout);
         dialogLaporanLayout.setHorizontalGroup(
             dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, Short.MAX_VALUE)
             .addGroup(dialogLaporanLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,6 +617,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        setBackground(new java.awt.Color(153, 255, 153));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -624,19 +625,26 @@ public class kunjungan extends javax.swing.JInternalFrame {
         setTitle("Kunjungan");
         setPreferredSize(new java.awt.Dimension(1280, 820));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Kunjungan"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Kunjungan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel1.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Kunjungan");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Tanggal Kunjungan");
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel13.setText("Kode Dokter");
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel14.setText("Nama Dokter");
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel15.setText("Jenis Kelamin Dokter");
 
+        btnCariPasien1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnCariPasien1.setText("Cari");
         btnCariPasien1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -644,6 +652,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel18.setText("Spesialis Dokter");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -677,7 +686,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtKdKunjungan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -706,7 +715,8 @@ public class kunjungan extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Kunjungan"));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Kunjungan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         tableKunjungan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -734,6 +744,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
             }
         });
 
+        btnStruk.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnStruk.setText("Cetak Struk");
         btnStruk.setPreferredSize(new java.awt.Dimension(97, 48));
         btnStruk.addActionListener(new java.awt.event.ActionListener() {
@@ -770,15 +781,20 @@ public class kunjungan extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Pasien"));
+        jPanel3.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(254, 404));
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel9.setText("Keluhan Pasien");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel7.setText("Nama Pasien");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Kode Pasien");
 
+        btnCariPasien.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnCariPasien.setText("Cari");
         btnCariPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -786,10 +802,13 @@ public class kunjungan extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel8.setText("Jenis Kelamin Pasien");
 
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel16.setText("Umur Pasien");
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel17.setText("Nomor Handphone Pasien");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -853,6 +872,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -861,6 +881,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -869,6 +890,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
             }
         });
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -877,6 +899,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
             }
         });
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -897,7 +920,7 @@ public class kunjungan extends javax.swing.JInternalFrame {
                     .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -911,16 +934,16 @@ public class kunjungan extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addComponent(btnTambah, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUbah, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addComponent(btnUbah, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                        .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                        .addComponent(btnKosong, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );

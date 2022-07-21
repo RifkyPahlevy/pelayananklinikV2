@@ -18,10 +18,10 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="88" splitType="Stretch"/>
+		<band height="77" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="62" splitType="Stretch">
+		<band height="99" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="10" width="555" height="20" uuid="4b74de2b-3366-407b-b9c7-ed0612ec2515"/>
 				<textElement textAlignment="Center">
@@ -30,33 +30,43 @@ FROM
 				<text><![CDATA[LAPORAN DATA TINDAKAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="34" y="42" width="100" height="20" uuid="79fbabc2-515c-4a12-b33d-2023f04b95a8"/>
+				<reportElement x="24" y="63" width="100" height="20" uuid="79fbabc2-515c-4a12-b33d-2023f04b95a8"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Kode Tindakan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="134" y="42" width="267" height="20" uuid="04fded9f-ccf4-4ac3-9d1b-e657577ca512"/>
+				<reportElement x="124" y="63" width="267" height="20" uuid="04fded9f-ccf4-4ac3-9d1b-e657577ca512"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Tindakan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="401" y="42" width="100" height="20" uuid="a5e83c8b-d033-4961-9862-2fbb3fc27251"/>
-				<textElement textAlignment="Right"/>
+				<reportElement x="391" y="63" width="100" height="20" uuid="a5e83c8b-d033-4961-9862-2fbb3fc27251"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Harga Tindakan]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="87" width="555" height="1" uuid="a8e836fb-d142-40f3-8ad6-3cbc24c632d4"/>
+			</line>
+			<line>
+				<reportElement x="5" y="58" width="555" height="1" uuid="0f18dfbe-dbec-4dc4-8567-20b66c80dd03"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="23" splitType="Stretch">
 			<textField>
 				<reportElement x="34" y="0" width="100" height="20" uuid="7da6b2ac-30b4-4e6c-ba08-620a6f5bec21"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_tindakan_kd_tindakan}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="134" y="3" width="267" height="20" uuid="4142afab-fa79-4423-81f8-fe230e54cd21"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_tindakan_tindakan}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="401" y="0" width="100" height="20" uuid="0c94c90d-05b1-428c-9d11-6d86885a3a79"/>
-				<textElement textAlignment="Right"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{t_tindakan_harga_tindakan}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -90,7 +100,7 @@ FROM
 			</staticText>
 			<staticText>
 				<reportElement x="382" y="160" width="109" height="20" uuid="6f5ecf6a-d5e6-45c4-90d9-d523f49d0333"/>
-				<text><![CDATA[Ahmad Hartono, M.M.]]></text>
+				<text><![CDATA[HJ. Evi Risnawati, SST]]></text>
 			</staticText>
 		</band>
 	</summary>
