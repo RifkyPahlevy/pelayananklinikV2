@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -186,14 +188,24 @@ public class ObatMasuk extends javax.swing.JInternalFrame {
         txtKetObat.setText(getKet);
     }
     
-public void cetak() {
-       try{
-            String NamaFile = "src/klinik/laporan/laporan_obat.jasper";     
-            JasperPrint JPrint = JasperFillManager.fillReport(NamaFile, null, klinik.koneksi.koneksi.getDB());
+public void cetak() throws SQLException {
+       try {
+            Date awal = tgl_awal.getDate();
+            Date akhir = tgl_akhir.getDate();
+//            String format_awal = date.format(awal);
+//            String format_akhir = date.format(akhir);
+            String namafile = "src/klinik/laporan/laporan_obat_masuk.jasper"
+                    + "";
+            HashMap<String, Object> hash = new HashMap<>();
+            hash.put("tgl_awal", awal);
+            hash.put("tgl_akhir", akhir);
+            File file = new File(namafile);
+           
+            JasperPrint JPrint = JasperFillManager.fillReport(namafile, hash, klinik.koneksi.koneksi.getDB());
             JasperViewer.viewReport(JPrint);
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
+         }catch (JRException ex) {
+            Logger.getLogger(ObatMasuk.class.getName()).log(Level.SEVERE, null, ex);
+         }
     
     }
 
@@ -211,6 +223,13 @@ public void cetak() {
         tableDialogObat = new javax.swing.JTable();
         btnDialogKembaliObat = new javax.swing.JButton();
         btnDialogMasukanObat = new javax.swing.JButton();
+        dialogLaporan = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        tgl_awal = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        tgl_akhir = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtKdObat = new javax.swing.JTextField();
@@ -289,20 +308,80 @@ public void cetak() {
                 .addContainerGap())
         );
 
+        dialogLaporan.setTitle("Pilih Tanggal");
+        dialogLaporan.setSize(new java.awt.Dimension(250, 260));
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("PILIH TANGGAL AWAL DAN AKHIR");
+
+        jLabel8.setText("Tanggal Awal");
+
+        jLabel9.setText("Tanggal Akhir");
+
+        jButton1.setText("Lihat Laporan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogLaporanLayout = new javax.swing.GroupLayout(dialogLaporan.getContentPane());
+        dialogLaporan.getContentPane().setLayout(dialogLaporanLayout);
+        dialogLaporanLayout.setHorizontalGroup(
+            dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 250, Short.MAX_VALUE)
+            .addGroup(dialogLaporanLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogLaporanLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogLaporanLayout.createSequentialGroup()
+                        .addGroup(dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tgl_akhir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tgl_awal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogLaporanLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20))))
+        );
+        dialogLaporanLayout.setVerticalGroup(
+            dialogLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogLaporanLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tgl_awal, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tgl_akhir, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Obat");
+        setTitle("Obat Masuk");
         setPreferredSize(new java.awt.Dimension(1000, 616));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Form Obat Masuk"));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Obat Masuk", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel1.setToolTipText("");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Kode Obat");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setText("Nama Obat");
 
+        btnTambah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTambah.setText("Tambah");
         btnTambah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnTambah.addActionListener(new java.awt.event.ActionListener() {
@@ -311,8 +390,10 @@ public void cetak() {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel5.setText("Keterangan Obat");
 
+        btnUbah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnUbah.setText("Ubah");
         btnUbah.setPreferredSize(new java.awt.Dimension(97, 48));
         btnUbah.addActionListener(new java.awt.event.ActionListener() {
@@ -321,6 +402,7 @@ public void cetak() {
             }
         });
 
+        btnHapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHapus.setText("Hapus");
         btnHapus.setPreferredSize(new java.awt.Dimension(97, 48));
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -329,6 +411,7 @@ public void cetak() {
             }
         });
 
+        btnKosong.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKosong.setText("Kosongkan");
         btnKosong.setPreferredSize(new java.awt.Dimension(97, 48));
         btnKosong.addActionListener(new java.awt.event.ActionListener() {
@@ -337,12 +420,16 @@ public void cetak() {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel3.setText("Harga Obat (Rp)");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Stok Obat Masuk");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setText("Nama Supplier");
 
+        btnCariObat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnCariObat.setText("Update Obat");
         btnCariObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -422,7 +509,8 @@ public void cetak() {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Daftar Obat"));
+        jPanel2.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Daftar Obat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         tableObat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -442,6 +530,7 @@ public void cetak() {
         });
         jScrollPane1.setViewportView(tableObat);
 
+        btnLaporan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnLaporan.setText("Cetak Laporan");
         btnLaporan.setPreferredSize(new java.awt.Dimension(97, 48));
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {
@@ -457,7 +546,7 @@ public void cetak() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+                    .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -535,7 +624,8 @@ public void cetak() {
     }//GEN-LAST:event_tableObatMouseClicked
 
     private void btnLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLaporanActionPerformed
-        cetak();
+        dialogLaporan.setLocationRelativeTo(null);
+        dialogLaporan.setVisible(true);
     }//GEN-LAST:event_btnLaporanActionPerformed
 
     private void btnCariObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariObatActionPerformed
@@ -563,6 +653,14 @@ public void cetak() {
         dialogObat.setVisible(false);
     }//GEN-LAST:event_btnDialogMasukanObatActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            cetak();
+        } catch (SQLException ex) {
+            Logger.getLogger(ObatMasuk.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCariObat;
@@ -573,19 +671,26 @@ public void cetak() {
     private javax.swing.JButton btnLaporan;
     private javax.swing.JButton btnTambah;
     private javax.swing.JButton btnUbah;
+    private javax.swing.JDialog dialogLaporan;
     private javax.swing.JDialog dialogObat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable tableDialogObat;
     private javax.swing.JTable tableObat;
+    private com.toedter.calendar.JDateChooser tgl_akhir;
+    private com.toedter.calendar.JDateChooser tgl_awal;
     private javax.swing.JTextField txtHargaObat;
     private javax.swing.JTextField txtKdObat;
     private javax.swing.JTextField txtKetObat;

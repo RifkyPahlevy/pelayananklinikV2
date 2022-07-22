@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2022 at 12:58 PM
+-- Generation Time: Jul 22, 2022 at 04:52 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -41,8 +41,11 @@ CREATE TABLE `kunjungan` (
 --
 
 INSERT INTO `kunjungan` (`kd_kunjungan`, `tgl_kunjungan`, `kd_pasien`, `keluhan`, `kd_petugas`, `status_rekam_medis`) VALUES
-('KNJ0001', '2022-07-01', 'PS0001', 'Pusing', 'DR0004', 'Sudah Rekam Medis'),
-('KNJ0002', '2022-07-05', 'PS0002', 'Sakit', 'DR0004', 'Belum Rekam Medis');
+('KNJ0001', '2022-07-01', 'PS0001', 'Pusing', 'PTG0001', 'Sudah Rekam Medis'),
+('KNJ0002', '2022-07-05', 'PS0002', 'Sakit', 'PTG0001', 'Belum Rekam Medis'),
+('KNJ0003', '2022-07-09', 'PS0001', 'hahahha', 'PTG0004', 'Belum Rekam Medis'),
+('KNJ0004', '2022-07-21', 'PS0003', 'Sakit Pinggang', 'PTG0001', 'Sudah Rekam Medis'),
+('KNJ0005', '2022-07-21', 'PS0004', 'Sakit Kepala', 'PTG0004', 'Belum Rekam Medis');
 
 -- --------------------------------------------------------
 
@@ -85,9 +88,47 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`kd_obat`, `nama_obat`, `stok_obat`, `harga_obat`, `keterangan`) VALUES
-('OBT0001', 'Paracetamol', 99, 10000, 'Obat demam'),
-('OBT0002', 'Amoldipin', 100, 30000, 'Untuk menurunkan darah'),
-('OBT0003', 'Panadol  Merah', 99, 5000, 'Obat Pusing');
+('OBT0001', 'Paracetamol', 98, 10000, 'Obat demam'),
+('OBT0002', 'Amoldipin', 99, 30000, 'Untuk menurunkan darah'),
+('OBT0003', 'Panadol  Merah', 100, 5000, 'Obat Pusing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `obat_masuk`
+--
+
+CREATE TABLE `obat_masuk` (
+  `kd_obat` varchar(20) NOT NULL,
+  `tgl_masuk` date NOT NULL,
+  `nama_supplier` varchar(50) NOT NULL,
+  `nama_obat` varchar(50) NOT NULL,
+  `stok_masuk` int(11) NOT NULL,
+  `harga_obat` int(11) NOT NULL,
+  `keterangan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `obat_masuk`
+--
+
+INSERT INTO `obat_masuk` (`kd_obat`, `tgl_masuk`, `nama_supplier`, `nama_obat`, `stok_masuk`, `harga_obat`, `keterangan`) VALUES
+('OBT0002', '2022-07-01', 'Kimia', 'Amoldipin', 100, 30000, 'Untuk menurunkan darah');
+
+--
+-- Triggers `obat_masuk`
+--
+DELIMITER $$
+CREATE TRIGGER `stok` AFTER INSERT ON `obat_masuk` FOR EACH ROW BEGIN 
+INSERT INTO obat SET kd_obat = NEW.kd_obat, 
+stok_obat = NEW.stok_masuk, 
+nama_obat = NEW.nama_obat,
+keterangan = NEW.keterangan,
+harga_obat = NEW.harga_obat
+ON DUPLICATE KEY UPDATE stok_obat = stok_obat + NEW.stok_masuk;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -109,7 +150,9 @@ CREATE TABLE `pasien` (
 
 INSERT INTO `pasien` (`kd_pasien`, `nama_pasien`, `umur`, `jenis_kelamin`, `no_hp`) VALUES
 ('PS0001', 'Akmal', '21', 'Laki-Laki', '08994445'),
-('PS0002', 'Muflih', '24', 'Laki-Laki', '08883');
+('PS0002', 'Muflih', '24', 'Laki-Laki', '08883'),
+('PS0003', 'Jumadi', '35', 'Laki-Laki', '4567888'),
+('PS0004', 'Adin', '22', 'Laki-Laki', '476668787');
 
 -- --------------------------------------------------------
 
@@ -134,7 +177,8 @@ INSERT INTO `petugas` (`kd_petugas`, `nama_petugas`, `jenis_kelamin`, `no_hp`, `
 ('PTG0001', 'Rifky', 'Laki-Laki', '09993', 'Dokter Umum', 'dokterk'),
 ('PTG0002', 'Marcel', 'Laki-Laki', '08993884', 'Bidan', 'bidan'),
 ('PTG0003', 'Muhammad Akmal', 'Laki-Laki', '088374', 'Administrasi', 'admin'),
-('PTG0004', 'DR.Burhanudin', 'Laki-Laki', '09934555', 'Dokter Umum', '12345');
+('PTG0004', 'DR.Burhanudin', 'Laki-Laki', '09934555', 'Dokter Umum', '12345'),
+('PTG0005', 'admin', 'Laki-Laki', '456667', 'Administrasi', 'admin');
 
 -- --------------------------------------------------------
 
@@ -155,7 +199,9 @@ CREATE TABLE `rekam_medis` (
 --
 
 INSERT INTO `rekam_medis` (`kd_rekam_medis`, `tgl_rekam_medis`, `kd_kunjungan`, `hasil_diagnosa`, `total_biaya`) VALUES
-('RMS0001', '2022-07-01', 'KNJ0001', 'kecapean nih', 60000);
+('RMS0001', '2022-07-01', 'KNJ0001', 'kecapean nih', 60000),
+('RMS0002', '2022-07-21', 'KNJ0005', 'Mau Flu', 60000),
+('RMS0003', '2022-07-21', 'KNJ0004', 'Kebanyakan main', 80000);
 
 -- --------------------------------------------------------
 
@@ -177,8 +223,8 @@ CREATE TABLE `t_detail_obat_rekam_medis` (
 --
 
 INSERT INTO `t_detail_obat_rekam_medis` (`kd_detail_obat_rekam_medis`, `kd_rekam_medis`, `kd_obat`, `obat`, `harga`, `jumlah_keluar`) VALUES
-(44, 'RMS0001', 'OBT0001', 'Paracetamol', 10000, 1),
-(47, 'RMS0002', 'OBT0003', 'Panadol  Merah', 5000, 1);
+(49, 'RMS0002', 'OBT0001', 'Paracetamol', 10000, 2),
+(50, 'RMS0003', 'OBT0002', 'Amoldipin', 30000, 1);
 
 --
 -- Triggers `t_detail_obat_rekam_medis`
@@ -217,8 +263,8 @@ CREATE TABLE `t_detail_tindakan_rekam_medis` (
 --
 
 INSERT INTO `t_detail_tindakan_rekam_medis` (`kd_detail_tindakan_rekam_medis`, `kd_rekam_medis`, `kd_tindakan`, `tindakan`, `harga`) VALUES
-(55, 'RMS0001', 'TDK0001', 'Konsultasi / Premedikasi', 50000),
-(56, 'RMS0002', 'TDK0004', 'Imunisasi', 20000);
+(59, 'RMS0002', 'TDK0001', 'Konsultasi / Premedikasi', 50000),
+(60, 'RMS0003', 'TDK0001', 'Konsultasi / Premedikasi', 50000);
 
 -- --------------------------------------------------------
 
@@ -243,44 +289,6 @@ INSERT INTO `t_dokter` (`kd_dokter`, `nama_dokter`, `jenis_kelamin`, `no_hp`, `s
 ('DR0002', 'Dr. Soebandono Munah', 'Perempuan', '093919281312', 'Umum'),
 ('DR0003', 'Dr. Andiman Budiman', 'Laki-Laki', '021912048043', 'Spesialis THT'),
 ('DR0004', 'Udin', 'Laki-Laki', '0999993', 'Umum');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `t_obat_masuk`
---
-
-CREATE TABLE `t_obat_masuk` (
-  `kd_obat` varchar(20) NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  `nama_supplier` varchar(50) NOT NULL,
-  `nama_obat` varchar(50) NOT NULL,
-  `stok_masuk` int(11) NOT NULL,
-  `harga_obat` int(11) NOT NULL,
-  `keterangan` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `t_obat_masuk`
---
-
-INSERT INTO `t_obat_masuk` (`kd_obat`, `tgl_masuk`, `nama_supplier`, `nama_obat`, `stok_masuk`, `harga_obat`, `keterangan`) VALUES
-('OBT0002', '2022-07-01', 'Kimia', 'Amoldipin', 100, 30000, 'Untuk menurunkan darah');
-
---
--- Triggers `t_obat_masuk`
---
-DELIMITER $$
-CREATE TRIGGER `stok` AFTER INSERT ON `t_obat_masuk` FOR EACH ROW BEGIN 
-INSERT INTO t_obat SET kd_obat = NEW.kd_obat, 
-stok_obat = NEW.stok_masuk, 
-nama_obat = NEW.nama_obat,
-keterangan = NEW.keterangan,
-harga_obat = NEW.harga_obat
-ON DUPLICATE KEY UPDATE stok_obat = stok_obat + NEW.stok_masuk;
-END
-$$
-DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -348,13 +356,13 @@ ALTER TABLE `t_dokter`
 -- AUTO_INCREMENT for table `t_detail_obat_rekam_medis`
 --
 ALTER TABLE `t_detail_obat_rekam_medis`
-  MODIFY `kd_detail_obat_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `kd_detail_obat_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `t_detail_tindakan_rekam_medis`
 --
 ALTER TABLE `t_detail_tindakan_rekam_medis`
-  MODIFY `kd_detail_tindakan_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `kd_detail_tindakan_rekam_medis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
