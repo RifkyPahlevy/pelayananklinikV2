@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="410414e1-eaaf-4ad3-9ef4-0622aeff0e27">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.9487171000000025"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.net.URL"/>
 	<queryString>
 		<![CDATA[SELECT
      obat.`kd_obat` AS t_obat_kd_obat,
@@ -22,76 +23,108 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="66" splitType="Stretch"/>
+		<band height="66" splitType="Stretch">
+			<image>
+				<reportElement x="115" y="7" width="100" height="50" uuid="b1f92f3e-4b01-47de-8c75-5c78239ff94d"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="415" y="41" width="140" height="20" uuid="d26769b6-bf16-47a3-ad70-3239b5ecc02a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="315" y="41" width="100" height="20" uuid="26c82ef5-8aea-4853-a290-e3d65f3a60f5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="41" width="115" height="20" uuid="74d944d6-7512-4180-a89e-65592067fe3f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="41" width="100" height="20" uuid="1ca8d0a4-ea72-4e99-a199-593d804430dd"/>
+			</rectangle>
 			<staticText>
-				<reportElement x="0" y="7" width="555" height="20" uuid="46008167-24c2-4101-a4ba-8e62c8ebb285"/>
+				<reportElement x="165" y="12" width="234" height="20" uuid="46008167-24c2-4101-a4ba-8e62c8ebb285"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA OBAT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="35" width="100" height="20" uuid="febf87d1-b810-4c82-8ad8-6cd918184d34"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="0" y="42" width="100" height="19" uuid="febf87d1-b810-4c82-8ad8-6cd918184d34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Kode Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="35" width="100" height="20" uuid="eb330047-1af0-4d66-bb44-cd9f7ddd4896"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Nama Obat]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="215" y="35" width="51" height="20" uuid="445eb3ee-7be6-48ef-b8fc-8cc90023efd8"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Stok Obat]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="285" y="35" width="71" height="20" uuid="59b93ebd-9008-4ba0-8f20-071a22783362"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="315" y="41" width="100" height="19" uuid="59b93ebd-9008-4ba0-8f20-071a22783362"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Harga Obat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="423" y="35" width="132" height="20" uuid="df96d649-77ba-4875-9266-8c42d49545b7"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="415" y="42" width="140" height="18" uuid="df96d649-77ba-4875-9266-8c42d49545b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Keterangan Obat]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="53" width="555" height="1" uuid="b95bbe3b-4d34-4011-b1bc-0c9e9059e2f0"/>
+				<reportElement x="0" y="3" width="555" height="1" uuid="0ee331e1-052b-4a4e-9379-c1482dc4943f"/>
 			</line>
-			<line>
-				<reportElement x="0" y="34" width="555" height="1" uuid="0ee331e1-052b-4a4e-9379-c1482dc4943f"/>
-			</line>
+			<staticText>
+				<reportElement x="100" y="41" width="115" height="19" uuid="eb330047-1af0-4d66-bb44-cd9f7ddd4896"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Obat]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="215" y="41" width="100" height="20" uuid="274fa1f8-05d8-4565-ac00-1d98b014663f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="215" y="42" width="100" height="18" uuid="445eb3ee-7be6-48ef-b8fc-8cc90023efd8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Stok Obat]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="21" splitType="Stretch">
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="100" height="20" uuid="3acb2156-512b-4042-909a-4fa141edf4f0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="0" width="115" height="20" uuid="c4c77cf1-5ac7-4b98-a7d2-571c1fe892c6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="215" y="0" width="100" height="20" uuid="cc47ae75-0e47-449b-8705-9859e5797f41"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="315" y="0" width="100" height="20" uuid="e9c2c14a-50b9-4afa-974f-6baca9bacb14"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="415" y="0" width="140" height="20" uuid="4378f0ec-985e-48fa-b34f-fdd8c9e2a8dd"/>
+			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="100" height="20" uuid="9b769f4f-c72d-4380-8f25-8b8f118d5f47"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_obat_kd_obat}]]></textFieldExpression>
+				<reportElement x="415" y="0" width="140" height="20" uuid="c005f078-c79b-47ed-97e2-e7c61de34af9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_obat_keterangan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="1" width="100" height="20" uuid="26040884-bb76-4a0e-bf56-a7edfde2da13"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_obat_nama_obat}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="215" y="1" width="51" height="20" uuid="b053b21d-4cf2-4730-95e5-ab7257844394"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_obat_stok_obat}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="285" y="1" width="71" height="20" uuid="b98f9e45-a960-45d1-a9bc-385f24779593"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="315" y="0" width="100" height="20" uuid="b98f9e45-a960-45d1-a9bc-385f24779593"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_obat_harga_obat}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="423" y="1" width="132" height="20" uuid="c005f078-c79b-47ed-97e2-e7c61de34af9"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_obat_keterangan}]]></textFieldExpression>
+				<reportElement x="215" y="0" width="100" height="20" uuid="b053b21d-4cf2-4730-95e5-ab7257844394"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_obat_stok_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="115" height="20" uuid="26040884-bb76-4a0e-bf56-a7edfde2da13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_obat_nama_obat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="9b769f4f-c72d-4380-8f25-8b8f118d5f47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_obat_kd_obat}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

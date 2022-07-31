@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a5b0e3a-b3c5-47b2-9f9a-a52cee8ff4a8">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.7715610000000035"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="tgl_awal" class="java.util.Date">
@@ -9,6 +9,7 @@
 	<parameter name="tgl_akhir" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="logo" class="java.net.URL"/>
 	<queryString>
 		<![CDATA[SELECT
      rekam_medis.`kd_rekam_medis` AS t_rekam_medis_kd_rekam_medis,
@@ -30,98 +31,130 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="88" splitType="Stretch"/>
+		<band height="88" splitType="Stretch">
+			<image>
+				<reportElement x="122" y="20" width="100" height="50" uuid="697dad06-75ae-4df5-9710-db9d1f60ed36"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="95" splitType="Stretch">
+			<rectangle>
+				<reportElement x="446" y="75" width="109" height="20" uuid="8b46de42-4833-4134-bfc0-9336ae7d569a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="346" y="75" width="100" height="20" uuid="adb59fc3-d821-4aae-8ccb-bb0325b37775"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="246" y="75" width="100" height="20" uuid="0655487f-1ee1-4df2-8a67-cacbb0ba0a44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="75" width="146" height="20" uuid="372c30e4-737c-4588-aa18-94a621cd934c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="75" width="100" height="20" uuid="14834d6b-1e3d-4e5c-bda0-0323ae590867"/>
+			</rectangle>
 			<staticText>
-				<reportElement x="0" y="11" width="555" height="20" uuid="80420d86-a708-4c1a-87d6-b26e989157f5"/>
+				<reportElement x="0" y="15" width="555" height="20" uuid="80420d86-a708-4c1a-87d6-b26e989157f5"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LAPORAN REKAM MEDIS PASIEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="60" width="100" height="20" uuid="2c405bfb-aed3-47a1-87d0-ac65e7b536c2"/>
-				<textElement textAlignment="Center">
+				<reportElement x="0" y="75" width="100" height="20" uuid="2c405bfb-aed3-47a1-87d0-ac65e7b536c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kode Rekam Medis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="60" width="146" height="20" uuid="b9a898b0-bda6-4384-8fe4-a8d08a21b0ba"/>
-				<textElement textAlignment="Center">
+				<reportElement x="100" y="75" width="146" height="20" uuid="b9a898b0-bda6-4384-8fe4-a8d08a21b0ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tanggal Rekam Medis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="246" y="60" width="100" height="20" uuid="a66078c8-8431-4f20-9454-01e2cd4f7d34"/>
-				<textElement textAlignment="Center">
+				<reportElement x="246" y="75" width="100" height="20" uuid="a66078c8-8431-4f20-9454-01e2cd4f7d34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kode Kunjungan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="60" width="100" height="20" uuid="3ee614a9-f7c3-43b6-8962-7474c422ef3a"/>
-				<textElement textAlignment="Center">
+				<reportElement x="346" y="75" width="100" height="20" uuid="3ee614a9-f7c3-43b6-8962-7474c422ef3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Hasil Diagnosa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="60" width="100" height="20" uuid="13e742c9-8ae3-4c98-bc15-dfb95db322bc"/>
-				<textElement textAlignment="Center">
+				<reportElement x="446" y="75" width="109" height="20" uuid="13e742c9-8ae3-4c98-bc15-dfb95db322bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total Biaya]]></text>
 			</staticText>
 			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="164" y="31" width="100" height="20" uuid="22080463-d97a-49ed-8f2f-9300daad61c0"/>
+				<reportElement x="164" y="38" width="100" height="20" uuid="22080463-d97a-49ed-8f2f-9300daad61c0"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy",new java.util.Locale("id")).format($P{tgl_awal})]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="294" y="31" width="100" height="20" uuid="1786470d-bb2e-49e8-a1c3-32905d4a6243"/>
+				<reportElement x="294" y="39" width="100" height="20" uuid="1786470d-bb2e-49e8-a1c3-32905d4a6243"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy",new java.util.Locale("id")).format($P{tgl_akhir})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="264" y="31" width="23" height="20" uuid="b5bbb402-b7cf-4438-b1e7-7af10c96ac66"/>
+				<reportElement x="264" y="38" width="23" height="20" uuid="b5bbb402-b7cf-4438-b1e7-7af10c96ac66"/>
 				<text><![CDATA[s/d]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="80" width="555" height="1" uuid="0c0d2886-f595-4f95-80e5-e472c2fdbda9"/>
-			</line>
-			<line>
-				<reportElement x="3" y="53" width="549" height="4" uuid="d74fd854-d76e-48e3-8c45-d8aa0c4b3f2d"/>
+				<reportElement x="0" y="6" width="555" height="1" uuid="6568e466-5782-4585-a338-9f851a25e13f"/>
 			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="22" splitType="Stretch">
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="100" height="20" uuid="5820d147-0c71-4df0-8086-a986a50b9eea"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="0" width="146" height="20" uuid="5970162c-d071-4ab2-9510-427a4376954b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="246" y="0" width="100" height="20" uuid="b21a69af-b86d-4b8b-b341-1bcc6d1dbf66"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="346" y="0" width="100" height="20" uuid="3c86eca6-2ea4-4480-bd7e-05423d1bd332"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="446" y="0" width="109" height="20" uuid="d62ecf88-2487-4b3b-a48e-33636b72f351"/>
+			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="100" height="20" uuid="d4a118b3-9450-4855-a2d6-f467e2a79415"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_rekam_medis_kd_rekam_medis}]]></textFieldExpression>
+				<reportElement x="446" y="0" width="109" height="20" uuid="bdb65ab9-dd0f-43a1-967b-d13024ff79b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_rekam_medis_total_biaya}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="0" width="146" height="20" uuid="cc83431b-5905-4ef3-8e09-181f8827bcb0"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE d MMMMM yyyy",new java.util.Locale("id")).format($F{t_rekam_medis_tgl_rekam_medis})]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="246" y="0" width="100" height="20" uuid="53d60ba7-433a-4194-844d-4a006ed049e2"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_rekam_medis_kd_kunjungan}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="346" y="0" width="137" height="20" uuid="cbe351fc-f991-455a-8532-83b9f45680b0"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="346" y="0" width="100" height="20" uuid="cbe351fc-f991-455a-8532-83b9f45680b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_rekam_medis_hasil_diagnosa}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="2" width="100" height="20" uuid="bdb65ab9-dd0f-43a1-967b-d13024ff79b6"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{t_rekam_medis_total_biaya}]]></textFieldExpression>
+				<reportElement x="246" y="0" width="100" height="20" uuid="53d60ba7-433a-4194-844d-4a006ed049e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_rekam_medis_kd_kunjungan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="146" height="20" uuid="cc83431b-5905-4ef3-8e09-181f8827bcb0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE d MMMMM yyyy",new java.util.Locale("id")).format($F{t_rekam_medis_tgl_rekam_medis})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d4a118b3-9450-4855-a2d6-f467e2a79415"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_rekam_medis_kd_rekam_medis}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

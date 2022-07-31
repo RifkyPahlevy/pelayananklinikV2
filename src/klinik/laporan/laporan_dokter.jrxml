@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24d85944-4365-4e27-b9b6-9beed6d955c9">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.948717100000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.net.URL"/>
 	<queryString>
 		<![CDATA[SELECT
      petugas.`kd_petugas` AS t_dokter_kd_dokter,
@@ -22,66 +23,108 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="85" splitType="Stretch"/>
+		<band height="85" splitType="Stretch">
+			<image>
+				<reportElement x="123" y="16" width="100" height="50" uuid="23e57e15-3496-4fef-b16b-9eedc0ac7aea"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="84" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="64" width="100" height="20" uuid="050100ec-8302-429c-a69c-54efa0d87579"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="64" width="123" height="20" uuid="8ae904d8-a98f-48af-a3d7-c5aba54c3dac"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="223" y="64" width="100" height="20" uuid="352d8b7c-925c-4a44-8143-b90032f7cf03"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="64" width="132" height="20" uuid="f9c443c9-6db7-4b55-a684-851f05d091e0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="323" y="64" width="100" height="20" uuid="076c3b3c-d9a4-488e-8e40-52b7f65fb927"/>
+			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="20" uuid="0e2fc584-61d7-4202-81ac-44ce787f0a0b"/>
+				<reportElement x="323" y="64" width="100" height="20" uuid="79883f80-02f1-4c07-a6c0-5a5e00577fda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Profesi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="25" width="254" height="20" uuid="0e2fc584-61d7-4202-81ac-44ce787f0a0b"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA PETUGAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="41" width="100" height="20" uuid="3849234c-0ca4-464a-bf1c-7d2727be9bd2"/>
+				<reportElement x="0" y="64" width="100" height="20" uuid="3849234c-0ca4-464a-bf1c-7d2727be9bd2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Kode Petugas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="41" width="100" height="20" uuid="6ddcdbb3-3d6a-4d3c-8637-163c0d88c967"/>
+				<reportElement x="100" y="64" width="123" height="20" uuid="6ddcdbb3-3d6a-4d3c-8637-163c0d88c967"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Nama Petugas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="223" y="41" width="100" height="20" uuid="8225d857-35ce-4ef6-925b-880de7b51e8d"/>
+				<reportElement x="223" y="64" width="100" height="20" uuid="8225d857-35ce-4ef6-925b-880de7b51e8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Jenis Kelamin]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="41" width="100" height="20" uuid="9b534ac2-dbfa-4bde-960b-43cab5b9156b"/>
+				<reportElement x="423" y="64" width="132" height="20" uuid="9b534ac2-dbfa-4bde-960b-43cab5b9156b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[No. Hp]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="323" y="41" width="100" height="20" uuid="79883f80-02f1-4c07-a6c0-5a5e00577fda"/>
-				<text><![CDATA[Profesi]]></text>
-			</staticText>
 			<line>
-				<reportElement x="0" y="71" width="555" height="1" uuid="f9ce098d-8328-4643-abaf-e98d3130ff92"/>
-			</line>
-			<line>
-				<reportElement x="2" y="31" width="555" height="1" uuid="2eaabe93-7486-449f-984a-5a3172a089b9"/>
+				<reportElement x="2" y="4" width="555" height="1" uuid="2eaabe93-7486-449f-984a-5a3172a089b9"/>
 			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="23" splitType="Stretch">
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="100" height="20" uuid="78aced0e-ca68-4df1-9fbb-324d752407fd"/>
+			</rectangle>
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="8d90b400-7a9f-4054-9ca9-1f6ad623f5ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_dokter_kd_dokter}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement x="100" y="0" width="123" height="20" uuid="b80afccc-6aec-4986-8e26-d33df7711191"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="223" y="0" width="100" height="20" uuid="dcf78940-58b8-4f8e-865b-ab1c984d7c37"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="323" y="0" width="100" height="20" uuid="a0bcb65e-9ee9-4bd3-ae63-4b2fbe76f53e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="423" y="0" width="132" height="20" uuid="25dad2a0-17bc-444b-87dd-028300e5b49f"/>
+			</rectangle>
 			<textField>
-				<reportElement x="100" y="3" width="100" height="20" uuid="d5ff17a9-a810-422e-bcc2-a7d7cd846d2c"/>
-				<textFieldExpression><![CDATA[$F{t_dokter_nama_dokter}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="223" y="3" width="100" height="20" uuid="ef9b7ee3-93d6-4d47-9c24-8deaafe324dc"/>
-				<textFieldExpression><![CDATA[$F{t_dokter_jenis_kelamin}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="455" y="3" width="100" height="20" uuid="f457ca30-e4a1-48a7-b7b9-76c12bec3f23"/>
+				<reportElement x="423" y="0" width="132" height="20" uuid="f457ca30-e4a1-48a7-b7b9-76c12bec3f23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_dokter_no_hp}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="323" y="3" width="100" height="20" uuid="b74e817b-00bf-42e3-b083-01f1ae456fca"/>
+				<reportElement x="323" y="0" width="100" height="20" uuid="b74e817b-00bf-42e3-b083-01f1ae456fca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_dokter_spesialis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="0" width="100" height="20" uuid="ef9b7ee3-93d6-4d47-9c24-8deaafe324dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_dokter_jenis_kelamin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="123" height="20" uuid="d5ff17a9-a810-422e-bcc2-a7d7cd846d2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{t_dokter_nama_dokter}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

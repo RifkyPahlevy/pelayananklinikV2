@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6a3f5010-a9ac-4d16-88d2-25851bf35282">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.9487171000000019"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="31"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.net.URL"/>
 	<queryString>
 		<![CDATA[SELECT
      pasien.`kd_pasien` AS t_pasien_kd_pasien,
@@ -22,96 +23,128 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="85" splitType="Stretch"/>
+		<band height="85" splitType="Stretch">
+			<image>
+				<reportElement x="119" y="17" width="100" height="50" uuid="9ac5be61-be7d-4a09-90e6-8d08373af673"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="76" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="41" width="100" height="20" uuid="4f4a7e46-7c20-4338-a184-ad155c1b8d25"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Kode Pasien]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="41" width="100" height="20" uuid="3de00b7d-532d-4ad4-ad7e-cb9ada1286e4"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Nama Pasien]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="242" y="41" width="100" height="20" uuid="41e597ca-2146-4ef7-9682-ef2bb965daa2"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Umur]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="342" y="41" width="100" height="20" uuid="e93ab0aa-ceb5-4be1-b1e3-3fa3a453a757"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[Jenis Kelamin]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="455" y="41" width="100" height="20" uuid="d949989e-cf28-4395-8e5c-2bb25e03d579"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[No Handphone]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="200" y="11" width="156" height="20" uuid="05239708-21f9-4b67-abeb-e776215fcf87"/>
+				<reportElement x="200" y="20" width="156" height="20" uuid="05239708-21f9-4b67-abeb-e776215fcf87"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Laporan Data Pasien]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="66" width="555" height="1" uuid="01ee8630-eda8-4221-890c-88ad0f664739"/>
+				<reportElement x="1" y="6" width="555" height="1" uuid="92e99e3d-716d-4a43-95c8-ee59a84cbe25"/>
 			</line>
-			<line>
-				<reportElement x="1" y="35" width="555" height="1" uuid="92e99e3d-716d-4a43-95c8-ee59a84cbe25"/>
-			</line>
+			<rectangle>
+				<reportElement x="1" y="56" width="100" height="20" uuid="39bbbabb-0a91-4dca-9cab-94d8f1ebcaa0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="56" width="155" height="20" uuid="3e9f2736-faeb-400e-b90d-6480531efd3f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="56" width="100" height="20" uuid="30446488-0e0f-4ae0-8529-676ed4869ffc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="355" y="56" width="100" height="20" uuid="a2a3c691-cb64-452f-a0f3-72d1fef20ae5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="455" y="56" width="100" height="20" uuid="caf5f720-6860-4214-8c00-72c95ccdf6c5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="57" width="100" height="19" uuid="4f4a7e46-7c20-4338-a184-ad155c1b8d25"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kode Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="57" width="155" height="19" uuid="3de00b7d-532d-4ad4-ad7e-cb9ada1286e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nama Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="56" width="100" height="20" uuid="41e597ca-2146-4ef7-9682-ef2bb965daa2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Umur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="56" width="100" height="20" uuid="e93ab0aa-ceb5-4be1-b1e3-3fa3a453a757"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="56" width="100" height="20" uuid="d949989e-cf28-4395-8e5c-2bb25e03d579"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[No Handphone]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="21" splitType="Stretch">
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="99" height="20" uuid="da95672e-b90c-494f-aaa3-2f70dba4a28e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="0" width="155" height="20" uuid="c50659a0-f018-4688-9329-937beef25552"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="255" y="0" width="100" height="20" uuid="a0945f78-17b4-4159-96f2-a1e741f94239"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="355" y="0" width="100" height="20" uuid="b0806b93-4189-437d-ae3a-cea9676f76b6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="455" y="0" width="100" height="20" uuid="5083bbee-05f7-4988-8aab-5feca3ea9f1a"/>
+			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="100" height="20" uuid="df647b92-ae56-4eb9-96a4-79dd42eec2a0"/>
-				<textElement textAlignment="Center">
+				<reportElement x="456" y="0" width="100" height="20" uuid="8b67a0c5-2b87-4022-9f1e-f437840f8f23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{t_pasien_kd_pasien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{t_pasien_no_hp}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="1" width="100" height="20" uuid="41d4534b-ea25-4e0f-9f13-3bf7c89ee710"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{t_pasien_nama_pasien}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="242" y="1" width="100" height="20" uuid="3600db91-0c06-4493-a8f1-635c605bf8e2"/>
-				<textElement textAlignment="Center">
-					<font isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{t_pasien_umur}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="342" y="1" width="100" height="20" uuid="1538da0d-ad60-4109-9b8e-6ae0828d770b"/>
-				<textElement textAlignment="Center">
+				<reportElement x="355" y="0" width="100" height="20" uuid="1538da0d-ad60-4109-9b8e-6ae0828d770b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{t_pasien_jenis_kelamin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="1" width="100" height="20" uuid="8b67a0c5-2b87-4022-9f1e-f437840f8f23"/>
-				<textElement textAlignment="Center">
+				<reportElement x="256" y="0" width="100" height="20" uuid="3600db91-0c06-4493-a8f1-635c605bf8e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{t_pasien_no_hp}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{t_pasien_umur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="154" height="20" uuid="41d4534b-ea25-4e0f-9f13-3bf7c89ee710"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_pasien_nama_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="99" height="20" uuid="df647b92-ae56-4eb9-96a4-79dd42eec2a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{t_pasien_kd_pasien}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

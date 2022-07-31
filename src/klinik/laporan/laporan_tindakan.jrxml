@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d3dbcf9e-25b8-4ed1-8943-343aab677a95">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.7715610000000017"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.net.URL"/>
 	<queryString>
 		<![CDATA[SELECT
      layanan.`kd_layanan` AS t_tindakan_kd_tindakan,
@@ -18,55 +19,75 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="77" splitType="Stretch"/>
+		<band height="77" splitType="Stretch">
+			<image>
+				<reportElement x="123" y="13" width="100" height="50" uuid="0450d4c2-998c-4a6f-8ee3-d7ac47f332df"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="99" splitType="Stretch">
+			<rectangle>
+				<reportElement x="397" y="79" width="158" height="20" uuid="c375dc7d-de39-4ba6-97e8-8f02f40c3b5c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="134" y="79" width="267" height="20" uuid="c6dcafe6-c63e-4acc-8059-1754064ee76e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="79" width="134" height="20" uuid="1ce5acb0-ba8c-4569-935b-212f9c27014b"/>
+			</rectangle>
 			<staticText>
-				<reportElement x="0" y="10" width="555" height="20" uuid="4b74de2b-3366-407b-b9c7-ed0612ec2515"/>
+				<reportElement x="146" y="36" width="251" height="20" uuid="4b74de2b-3366-407b-b9c7-ed0612ec2515"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[LAPORAN DATA TINDAKAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="24" y="63" width="100" height="20" uuid="79fbabc2-515c-4a12-b33d-2023f04b95a8"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="0" y="79" width="134" height="20" uuid="79fbabc2-515c-4a12-b33d-2023f04b95a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Kode Tindakan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="124" y="63" width="267" height="20" uuid="04fded9f-ccf4-4ac3-9d1b-e657577ca512"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="134" y="79" width="267" height="20" uuid="04fded9f-ccf4-4ac3-9d1b-e657577ca512"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Tindakan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="391" y="63" width="100" height="20" uuid="a5e83c8b-d033-4961-9862-2fbb3fc27251"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="402" y="79" width="153" height="20" uuid="a5e83c8b-d033-4961-9862-2fbb3fc27251"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Harga Tindakan]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="87" width="555" height="1" uuid="a8e836fb-d142-40f3-8ad6-3cbc24c632d4"/>
-			</line>
-			<line>
-				<reportElement x="5" y="58" width="555" height="1" uuid="0f18dfbe-dbec-4dc4-8567-20b66c80dd03"/>
+				<reportElement x="0" y="6" width="555" height="1" uuid="0f18dfbe-dbec-4dc4-8567-20b66c80dd03"/>
 			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="23" splitType="Stretch">
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="134" height="20" uuid="4ebe058f-0568-4e7f-a454-97072ae14947"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="0" width="154" height="20" uuid="d55e289d-1cdb-49a9-81a2-669ecb8505e7"/>
+			</rectangle>
 			<textField>
-				<reportElement x="34" y="0" width="100" height="20" uuid="7da6b2ac-30b4-4e6c-ba08-620a6f5bec21"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="0" y="0" width="134" height="20" uuid="7da6b2ac-30b4-4e6c-ba08-620a6f5bec21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_tindakan_kd_tindakan}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement x="134" y="0" width="267" height="20" uuid="bca3bf7b-e33f-4987-840d-89306f904e55"/>
+			</rectangle>
 			<textField>
-				<reportElement x="134" y="3" width="267" height="20" uuid="4142afab-fa79-4423-81f8-fe230e54cd21"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="134" y="0" width="267" height="20" uuid="4142afab-fa79-4423-81f8-fe230e54cd21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_tindakan_tindakan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="401" y="0" width="100" height="20" uuid="0c94c90d-05b1-428c-9d11-6d86885a3a79"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="402" y="0" width="153" height="20" uuid="0c94c90d-05b1-428c-9d11-6d86885a3a79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{t_tindakan_harga_tindakan}]]></textFieldExpression>
 			</textField>
 		</band>
