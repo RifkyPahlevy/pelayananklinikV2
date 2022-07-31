@@ -33,9 +33,23 @@ WHERE
 	<pageHeader>
 		<band height="88" splitType="Stretch">
 			<image>
-				<reportElement x="122" y="20" width="100" height="50" uuid="697dad06-75ae-4df5-9710-db9d1f60ed36"/>
+				<reportElement x="50" y="11" width="100" height="50" uuid="697dad06-75ae-4df5-9710-db9d1f60ed36"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="197" y="-1" width="229" height="28" uuid="86501f28-d708-433c-8096-a6c80de80bc8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Heavy" size="18"/>
+				</textElement>
+				<text><![CDATA[Klinik Bidan HJ. EVY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="27" width="281" height="34" uuid="898d6ca0-aa9b-4f50-ad38-c8039ec504ec"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Kutilang Blok D4 No. 10 Rw.004 Rt.010 Kelurahan limo, Kecamatan Limo Kota Depok, ]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -98,15 +112,15 @@ WHERE
 				<text><![CDATA[Total Biaya]]></text>
 			</staticText>
 			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="164" y="38" width="100" height="20" uuid="22080463-d97a-49ed-8f2f-9300daad61c0"/>
+				<reportElement x="174" y="38" width="100" height="20" uuid="22080463-d97a-49ed-8f2f-9300daad61c0"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy",new java.util.Locale("id")).format($P{tgl_awal})]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="294" y="39" width="100" height="20" uuid="1786470d-bb2e-49e8-a1c3-32905d4a6243"/>
+				<reportElement x="346" y="38" width="100" height="20" uuid="1786470d-bb2e-49e8-a1c3-32905d4a6243"/>
 				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMMM yyyy",new java.util.Locale("id")).format($P{tgl_akhir})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="264" y="38" width="23" height="20" uuid="b5bbb402-b7cf-4438-b1e7-7af10c96ac66"/>
+				<reportElement x="293" y="38" width="23" height="20" uuid="b5bbb402-b7cf-4438-b1e7-7af10c96ac66"/>
 				<text><![CDATA[s/d]]></text>
 			</staticText>
 			<line>

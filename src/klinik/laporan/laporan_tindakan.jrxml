@@ -21,9 +21,23 @@ FROM
 	<pageHeader>
 		<band height="77" splitType="Stretch">
 			<image>
-				<reportElement x="123" y="13" width="100" height="50" uuid="0450d4c2-998c-4a6f-8ee3-d7ac47f332df"/>
+				<reportElement x="34" y="11" width="100" height="50" uuid="0450d4c2-998c-4a6f-8ee3-d7ac47f332df"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="153" y="0" width="229" height="28" uuid="fb3c9e0f-6e28-4493-8950-9b65c32bcdb8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Heavy" size="18"/>
+				</textElement>
+				<text><![CDATA[Klinik Bidan HJ. EVY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="28" width="281" height="34" uuid="b8d1f865-b133-4877-b0a7-bcdd7ee7d52d"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Kutilang Blok D4 No. 10 Rw.004 Rt.010 Kelurahan limo, Kecamatan Limo Kota Depok, ]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -38,11 +52,11 @@ FROM
 				<reportElement x="0" y="79" width="134" height="20" uuid="1ce5acb0-ba8c-4569-935b-212f9c27014b"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="146" y="36" width="251" height="20" uuid="4b74de2b-3366-407b-b9c7-ed0612ec2515"/>
+				<reportElement x="157" y="39" width="251" height="20" uuid="4b74de2b-3366-407b-b9c7-ed0612ec2515"/>
 				<textElement textAlignment="Center">
-					<font size="14"/>
+					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[LAPORAN DATA TINDAKAN]]></text>
+				<text><![CDATA[LAPORAN DATA LAYANAN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="79" width="134" height="20" uuid="79fbabc2-515c-4a12-b33d-2023f04b95a8"/>

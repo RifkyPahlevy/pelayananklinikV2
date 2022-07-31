@@ -8,12 +8,14 @@ package klinik.tampilan;
 import com.mysql.jdbc.PreparedStatement;
 import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -211,12 +213,18 @@ public class pasien extends javax.swing.JInternalFrame {
     }
     
     public void cetak() {
-       try{
-            String NamaFile = "src/klinik/laporan/laporan_pasien.jasper";     
-            JasperPrint JPrint = JasperFillManager.fillReport(NamaFile, null, klinik.koneksi.koneksi.getDB());
-            JasperViewer.viewReport(JPrint);
-        }catch(Exception ex){
-            System.out.println(ex);
+        try {
+                InputStream report;
+            report = getClass().getResourceAsStream("/klinik/laporan/laporan_pasien.jasper");
+             HashMap<String, Object> parameter = new HashMap<>();
+            URL url = this.getClass().getClassLoader().getResource("gambar/bidan.png");
+            parameter.put("logo", url);
+            JasperPrint jprint = JasperFillManager.fillReport(report,parameter, klinik.koneksi.koneksi.getDB());
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setFitPageZoomRatio();
+            viewer.setVisible(true);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
         }
     
     }

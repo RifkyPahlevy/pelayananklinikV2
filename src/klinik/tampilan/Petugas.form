@@ -149,6 +149,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtKdDokter">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNmDokter">
         </Component>

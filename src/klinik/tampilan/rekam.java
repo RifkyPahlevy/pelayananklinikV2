@@ -7,6 +7,8 @@ package klinik.tampilan;
 
 import com.mysql.jdbc.PreparedStatement;
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -517,22 +519,25 @@ public class rekam extends javax.swing.JInternalFrame {
         txtNmObat.setText(getNama);
         txtHargaObat.setText(getHarga);
     }
-    
+     
     private void cetak() throws SQLException {
-        try {
+       try {
             Date awal = tgl_awal.getDate();
             Date akhir = tgl_akhir.getDate();
-            String namafile = "src/klinik/laporan/laporan_rekam_medis_pasien.jasper"
-                    + "";
-            HashMap<String,Object> hash = new HashMap<>();
-            hash.put("tgl_awal", awal);
-            hash.put("tgl_akhir", akhir);
-            File file = new File(namafile);
-            JasperPrint JPrint = JasperFillManager.fillReport(namafile, hash, klinik.koneksi.koneksi.getDB());
-            JasperViewer.viewReport(JPrint);
-         }catch (JRException ex) {
-            Logger.getLogger(kunjungan.class.getName()).log(Level.SEVERE, null, ex);
-         }
+                InputStream report;
+            report = getClass().getResourceAsStream("/klinik/laporan/laporan_rekam_medis_pasien.jasper");
+             HashMap<String, Object> parameter = new HashMap<>();
+            URL url = this.getClass().getClassLoader().getResource("gambar/bidan.png");
+            parameter.put("logo", url);
+            parameter.put("tgl_awal", awal);
+            parameter.put("tgl_akhir", akhir);
+            JasperPrint jprint = JasperFillManager.fillReport(report,parameter, klinik.koneksi.koneksi.getDB());
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setFitPageZoomRatio();
+            viewer.setVisible(true);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
     }
 
     /**

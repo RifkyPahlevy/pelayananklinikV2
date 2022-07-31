@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="24d85944-4365-4e27-b9b6-9beed6d955c9">
 	<property name="ireport.zoom" value="1.948717100000002"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="154"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="logo" class="java.net.URL"/>
 	<queryString>
@@ -25,9 +25,23 @@ FROM
 	<pageHeader>
 		<band height="85" splitType="Stretch">
 			<image>
-				<reportElement x="123" y="16" width="100" height="50" uuid="23e57e15-3496-4fef-b16b-9eedc0ac7aea"/>
+				<reportElement x="57" y="10" width="100" height="50" uuid="23e57e15-3496-4fef-b16b-9eedc0ac7aea"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="157" y="10" width="229" height="28" uuid="42f62181-ee19-4401-a5c1-1ccbeac6d2bf"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Heavy" size="18"/>
+				</textElement>
+				<text><![CDATA[Klinik Bidan HJ. EVY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="146" y="38" width="281" height="34" uuid="acb7c11e-4ced-448d-bfdc-a25254ca402a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Kutilang Blok D4 No. 10 Rw.004 Rt.010 Kelurahan limo, Kecamatan Limo Kota Depok, ]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="872c12e5-279b-40bb-8a32-922629ebad2f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="286"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -53,6 +53,7 @@ FROM
 	<parameter name="kd_dokter" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      rekam_medis.`kd_rekam_medis` AS t_rekam_medis_kd_rekam_medis,
@@ -135,7 +136,26 @@ AND pasien.`kd_pasien` = $P{kd_pasien}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="87" splitType="Stretch"/>
+		<band height="87" splitType="Stretch">
+			<image>
+				<reportElement x="49" y="23" width="100" height="50" uuid="06725fca-256f-40fc-91c4-d3d94d9d7a3f"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="168" y="12" width="229" height="28" uuid="1a1fbf6c-17a5-4857-87bf-32c8c702ce23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Franklin Gothic Heavy" size="18"/>
+				</textElement>
+				<text><![CDATA[Klinik Bidan HJ. EVY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="40" width="281" height="34" uuid="426ca2f3-cf9c-4796-ad46-8f779abeb1a6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jl. Kutilang Blok D4 No. 10 Rw.004 Rt.010 Kelurahan limo, Kecamatan Limo Kota Depok, ]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="391" splitType="Stretch">

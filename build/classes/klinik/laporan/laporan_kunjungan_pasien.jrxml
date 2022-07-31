@@ -9,6 +9,7 @@
 	<parameter name="tgl_akhir" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      kunjungan.`kd_kunjungan` AS t_kunjungan_kd_kunjungan,
